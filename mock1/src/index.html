@@ -1,0 +1,359 @@
+<html>
+	<head>
+		<title>Mockup</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' 
+			rel='stylesheet' type='text/css'>
+		<link 
+			href='http://fonts.googleapis.com/css?family=Lato:400,400italic' 
+			rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="autogrow.js"></script>
+		<script type="text/javascript">
+			//window.onerror =  function(msg, url, line, col, error) {
+			//	var extra = !col ? '' : '\ncolumn: ' + col;
+			//	extra += !error ? '' : '\nerror: ' + error;
+
+			//	// alert the error
+			//	alert("Error: " + msg + "\nurl: " + url + "\nline: " 
+			//			+ line + extra);   
+
+			//	// prevent browsers that natively alert errors
+			//	var suppressNativeErrorAlert = true;
+			//	return suppressNativeErrorAlert;
+			//};
+		</script>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript" src="ui-bootstrap.js"></script>
+		<script type="text/javascript" src="angular-animate.js"></script>
+		<script type="text/javascript" src="firebase.js"></script>
+		<script type="text/javascript" src="angularfire.js"></script>
+		<script type="text/javascript" src="index_controllers.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.autogrow').autogrow();
+			})
+		</script>
+	</head>
+	<body ng-app="my_app">
+		<div class="column_wrapper">
+			<div id="side_nav">
+
+				<div class="big_plaque">
+					<div class="home_avatar_bar">
+
+						<img class="avatar" src="bill.jpg" />
+
+						<div class="user_deets">
+							<a class="username">
+								Bill Gates
+							</a>
+							<div class="user_rep">
+								<span class="rep_points">
+									17
+								</span>
+								<span class="rep_rep small_text">
+									reputation
+								</span>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="user_options">
+						<div class="user_option">
+							<a>settings</a>
+						</div>
+						<div class="user_option">
+							<a>your posts</a>
+						</div>
+						<div class="user_option">
+							<a>your issues</a>
+						</div>
+					</div>
+
+				</div>
+
+
+				<h2>followed accounts</h2>
+				<div id="followed_plaque" class="plaque">
+
+					<div class="avatar_bar_tiny">
+						<img src="coleman.jpg" class="avatar" />
+						<a class="username">
+							gabriella Coleman
+						</a>
+					</div>
+					<div class="avatar_bar_tiny">
+						<img src="david-cameron.jpg" class="avatar" />
+						<a class="username">
+							David Cameron
+						</a>
+					</div>
+					<div class="avatar_bar_tiny">
+						<img src="spidey.jpg" class="avatar" />
+						<a class="username">
+							Spider Man
+						</a>
+					</div>
+					<div class="show_more margin-bot-neg-med centering">
+						<a>
+							see all<br/>
+							<span class="glyphicon glyphicon-chevron-down"
+								aria-hidden="true"></span>
+						</a>
+					</div>
+				</div>
+
+				<h2>watched issues</h2>
+				<div class="plaque">
+
+					<div class="issue_bar_tiny">
+						<a class="issue_link">
+							<img src="keystone.jpg" class="issue_icon" />
+							<span class="issue_name">
+								Keystone XL Pipeline Extension
+							</span>
+						</a>
+					</div>
+
+					<div class="issue_bar_tiny">
+						<a class="issue_link">
+							<img src="election.jpg" class="issue_icon" />
+							<span class="issue_name">
+								UK Election 2015
+							</span>
+						</a>
+					</div>
+
+					<div class="issue_bar_tiny">
+						<a class="issue_link">
+							<img src="assange.jpg" class="issue_icon" />
+							<span class="issue_name">
+								Free Julian Assange
+							</span>
+						</a>
+					</div>
+
+					<div class="show_more margin-bot-neg-med centering">
+						<a>
+							see all<br/>
+							<span class="glyphicon glyphicon-chevron-down"
+								aria-hidden="true"></span>
+						</a>
+					</div>
+				</div>
+			
+			</div>
+			<div id="center_lane" class="centering">
+				<div id="post_control">
+					<div class="prompt">what's happening?</div>
+					<textarea id="post_input" 
+						class="full_width top_section" name="post"></textarea>
+					<div class="bottom_section">
+						<div class="social_option">
+							<input id="post_to_facebook" type="checkbox" 
+								name="post_to_facebook" />
+							<label for="post_to_facebook">
+								<img class="social_media_icon" 
+									src="facebook_ico.png" />
+							</label>
+						</div>
+
+						<div class="social_option">
+							<input id="post_to_twitter" type="checkbox" 
+								name="post_to_twitter" />
+							<label 
+								for="post_to_twitter">
+								<img class="social_media_icon" 
+									src="twitter_ico.png" />
+							</label>
+						</div>
+						<button type="button" class="pull-right btn btn-default btn-sm">
+							post
+						</button>
+						<div class="clear"></div>
+					</div>
+
+				</div>
+
+				<div id="feed" ng-controller="FeedCtrl">
+
+					<div ng-repeat="item in feed" 
+						class="panel panel-default feed-item">
+						<div class="feed-item-iconography">
+							<div class="label-politics">
+								politics
+							</div>
+							<img src="david-cameron.jpg" 
+								class="feed-item-icon" />
+						</div>
+						<div class="feed-item-top">
+							<div class="feed-item-divider"></div>
+							<a><h3 class="feed-item-title">
+									{{ item.title }}
+							</h3></a>
+						</div>
+						<div class="feed-item-bot">
+							<p>
+								{{ item.text }}
+							</p>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+			</div>
+			<div id="right_lane">
+				<div class="lane-section">
+					<h3>tools</h3>
+					<a class="section-item">
+						get in touch with decisionmakers
+					</a>
+					<a class="section-item">
+						plan a demonstration
+					</a>
+				</div>
+				<div class="lane-section">
+					<h3>upcoming events</h3>
+					<div class="lane-subsection">
+						<h4>later this week</h4>
+
+						<div class="section-item">
+							<div class="section-item-icon section-item-icon-demo"></div>
+							<a class="section-item-info">
+								<span class="date">23 May</span>
+								&mdash; Demonstration on Parliament Hill
+								
+							</a>
+							<div class="clear"></div>
+						</div>
+
+						<div class="section-item">
+							<div 
+								class="section-item-icon section-item-icon-meeting">
+							</div>
+							<a class="section-item-info">
+								<span class="date">23 May</span>
+								&mdash; Public meeting to discuss plans 
+								for new Hospital
+							</a>
+							<div class="clear"></div>
+						</div>
+
+					</div>
+					<div class="lane-subsection">
+						<h4>next week</h4>
+
+						<div class="section-item">
+							<div class="section-item-icon section-item-icon-demo"></div>
+							<a class="section-item-info">
+								<span class="date">23 May</span>
+								&mdash; Demonstration on Parliament Hill
+								
+							</a>
+							<div class="clear"></div>
+						</div>
+
+						<div class="section-item">
+							<div 
+								class="section-item-icon section-item-icon-meeting">
+							</div>
+							<a class="section-item-info">
+								<span class="date">23 May</span>
+								&mdash; Public meeting to discuss plans 
+								for new Hospital
+							</a>
+							<div class="clear"></div>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="lane-section">
+					<h3>in Canada</h3>
+
+					<div class="section-item">
+						<img src="spidey.jpg" class="section-item-icon section-item-avatar"/>
+						<a class="section-item-info">
+							OMG that pic of harper with the Queen is too much.
+							What are our politicians coming to??
+						</a>
+						<div class="clear"></div>
+					</div>
+
+					<div class="section-item">
+						<div 
+							class="section-item-icon section-item-icon-letter">
+						</div>
+						<a class="section-item-info">
+							<span class="caps">attn</span> Stephen 
+							Harper (+5): increase minimum wage accross Canada.
+						</a>
+						<div class="clear"></div>
+					</div>
+
+
+				</div>
+
+				<div class="lane-section">
+					<h3>in Quebec</h3>
+
+					<div class="section-item">
+						<img src="spidey.jpg" class="section-item-icon section-item-avatar"/>
+						<a class="section-item-info">
+							OMG that pic of harper with the Queen is too much.
+							What are our politicians coming to??
+						</a>
+						<div class="clear"></div>
+					</div>
+
+					<div class="section-item">
+						<div 
+							class="section-item-icon section-item-icon-letter">
+						</div>
+						<a class="section-item-info">
+							<span class="caps">attn</span> Stephen 
+							Harper (+5): increase minimum wage accross Canada.
+						</a>
+						<div class="clear"></div>
+					</div>
+
+
+				</div>
+
+				<div class="lane-section">
+					<h3>in Montreal</h3>
+
+					<div class="section-item">
+						<img src="spidey.jpg" class="section-item-icon section-item-avatar"/>
+						<a class="section-item-info">
+							OMG that pic of harper with the Queen is too much.
+							What are our politicians coming to??
+						</a>
+						<div class="clear"></div>
+					</div>
+
+					<div class="section-item">
+						<div 
+							class="section-item-icon section-item-icon-letter">
+						</div>
+						<a class="section-item-info">
+							<span class="caps">attn</span> Stephen 
+							Harper (+5): increase minimum wage accross Canada.
+						</a>
+						<div class="clear"></div>
+					</div>
+
+
+				</div>
+
+
+			</div>
+			<div class="clear"></div>
+		</div>
+	</body>
+</html>

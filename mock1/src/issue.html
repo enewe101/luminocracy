@@ -1,0 +1,644 @@
+<html>
+	<head>
+		<title>Mockup</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="autogrow.js"></script>
+		<script type="text/javascript">
+			//window.onerror =  function(msg, url, line, col, error) {
+			//	var extra = !col ? '' : '\ncolumn: ' + col;
+			//	extra += !error ? '' : '\nerror: ' + error;
+
+			//	// alert the error
+			//	alert("Error: " + msg + "\nurl: " + url + "\nline: " 
+			//			+ line + extra);   
+
+			//	// prevent browsers that natively alert errors
+			//	var suppressNativeErrorAlert = true;
+			//	return suppressNativeErrorAlert;
+			//};
+		</script>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript" src="ui-bootstrap.js"></script>
+		<script type="text/javascript" src="angular-animate.js"></script>
+		<script type="text/javascript" src="firebase.js"></script>
+		<script type="text/javascript" src="angularfire.js"></script>
+		<script type="text/javascript" src="controllers.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.autogrow').autogrow();
+			})
+		</script>
+	</head>
+
+	<body ng-app="my_app">
+
+		
+
+		<div class="narrow_page">
+
+			<div id="left_col">
+
+				<div id="writeup" class="visual_container">
+					<h1>Keystone XL Pipeline Extension</h1>
+					<p>
+					The Keystone XL Pipeline is a proposed extension to
+					the existing Keystone Pipeline System, put forward
+					by TransCanada, the corporation that owns the
+					Keystone System.  The pipeline would cross the
+					Canada/US border, importing crude oil sourced from
+					the Albertan oil sands, into the United States. The
+					proposal is currently awaiting government approval.
+					The pipeline would be newly constructed, and is
+					similar to existing pipelines in North America.
+					</p>
+					<div ng-controller="SubscribeCtrl">
+						<div id="subscribe_widget" ng-click="toggle_subscribe()">
+							<div id="subscribe_icon" 
+								ng-class='sub_class'></div>
+							<a id="subscribe_link">
+								{{ sub_text }}
+							</a>
+						</div>
+					</div>
+					<script type="text/javascript">
+					</script>
+				</div>
+
+				<div ng-controller="PostCtrl">
+
+					<div id="post_widget">
+						<div class="avatar left" id="avatar_bar"></div>
+						<div id="post_bar">
+							<div id="post_prompt"></div>
+
+							<div class="visual_container" id="post_control_wrapper">
+
+								<textarea class="autogrow" id="post_textarea"
+									placeholder="what's your opinion?" 
+									ng-model="post_text"
+									></textarea>
+
+								<div id="post_bottom_line">
+									<a id="post_link" 
+										ng-click="put_post()">
+										post
+									</a>
+								</div>
+
+							</div>
+
+						</div>
+						<div class="clear"></div>
+
+					</div>
+
+						<h2>What people are saying:</h2>
+
+						<div class="opinion_container" ng-repeat="post in posts">
+
+							<div class="avatar_row">
+
+								<span class="opinion_avatar avatar inline-block">
+								</span>
+
+								<div class="user_deets">
+									<a class="username">
+										{{ post.user.username }}
+									</a>
+									<div class="user_rep">
+										<span class="rep_points">
+											{{post.user.rep}}
+										</span>
+										<span class="rep_rep small_text">
+											reputation
+										</span>
+									</div>
+								</div>
+								<div class="time_stamp small_text">4 hrs</div>
+
+							</div>
+
+							<div class="opinion_text">
+								{{ post.text }}
+							</div>
+							<div class="social_actions">
+								<a>share</a>
+								<span class="dot blue"></span>
+								<a>support</a>
+								<span class="dot blue"></span>
+								<a>comment</a>
+							</div>
+						</div>
+
+
+					</div>
+
+					<div id="opninions">
+
+
+						<div class="opinion_container">
+
+							<div class="avatar_row">
+
+								<span class="opinion_avatar avatar inline-block">
+								</span>
+
+								<div class="user_deets">
+									<a class="username">Ricci Martin</a>
+									<div class="user_rep">
+										<span class="rep_points">1324</span>
+										<span class="rep_rep small_text">
+											reputation
+										</span>
+									</div>
+								</div>
+								<div class="time_stamp small_text">4 hrs</div>
+
+							</div>
+
+							<div class="opinion_text">
+								<p>
+								The pipeline will be made out of mashed
+								potatoes and re-patriated journalists.  It will
+								be approximately 17 inches long and will weight
+								about as much as a typical house cat.
+								</p>
+								<p>
+								I hate this pipeline almost as much as I hate
+								my neighbors.
+								</p>
+							</div>
+							<div class="social_actions">
+								<a>share</a>
+								<span class="dot blue"></span>
+								<a>support</a>
+								<span class="dot blue"></span>
+								<a>comment</a>
+							</div>
+						</div>
+
+						<div class="letter">
+							<div class="letter_border">
+								<h3 class="letter_header">Stop Keystone XL</h3>
+								<div class="letter_indent">
+									<span class="attn"></span><br/>
+									<div class="recipients further_indent">
+										<span class="recipient bold small_text">
+											Stephen Harper
+										</span><br/>
+										<span class="recipient bold small_text">
+											Elizabeth May
+										</span><br/>
+										<span class="recipient bold small_text">
+											Thomas Mulcair
+										</span><br/>
+										<a class="small_text">And 7 others</a>
+									</div>
+								</div>
+								<div class="letter_body">
+									<p>
+									I do not support the project to expand the
+									Keystone Pipeline System. This proposal
+									generates serious and certain environmental
+									losses, which do not justify the economic
+									gains. Furthermore, the development will
+									bring wealth mainly to foreign
+									shareholders, so that the actual economic
+									gains will be much less than they should
+									be.
+									</p>
+									<p>
+									Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit, sed do eiusmod tempor
+									incididunt ut labore et dolore magna
+									aliqua. Ut enim ad minim veniam, quis
+									nostrud exercitation ullamco laboris nisi
+									ut aliquip ex ea commodo consequat.  Duis
+									aute irure dolor in reprehenderit in
+									voluptate velit esse cillum dolore eu
+									fugiat nulla pariatur. Excepteur sint
+									occaecat cupidatat non proident, sunt in
+									culpa qui officia deserunt mollit anim id
+									est laborum.
+									</p>
+								</div>
+								<div class="letter_indent">
+									<div class="pleasantry">
+										Sincerely,
+									</div>
+								</div>
+								<div class="senders">
+									<div class="main_sender">
+										<span class="opinion_avatar avatar inline-block">
+										</span>
+										<div class="user_deets right_med">
+											<a class="username">Ricci Martin</a><br/>
+											<div class="user_rep">
+												<span class="rep_points">1324</span>
+												<span class="rep_rep small_text">
+													reputation
+												</span>
+											</div>
+										</div>
+										<div class="vert_sep_36 inline-block">
+										</div>
+										<div class="inline-block left_med">
+											<div>
+												<a class="left_small small_text">
+													and 37 others
+												</a>
+											</div>
+											<span>
+												<span class="avatar_small">
+												</span>
+												<span class="avatar_small">
+												</span>
+												<span class="avatar_small">
+												</span>
+												<span class="avatar_small">
+												</span>
+												<span class="avatar_small">
+												</span>
+											</span>
+										</div>
+									</div>
+								</div>
+
+							<div class="letter_corner"> </div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+			<!-- end left column container -->
+
+			<div id="right_col">
+
+				<!-- begin key facts area -->
+				<div id="key_facts" ng-controller="KeyFactsCtrl">
+					<h2>Key Facts</h2>
+
+					<button type="button" 
+						class="heading_button btn btn-sm btn-primary" 
+						ng-model="is_collapsed" 
+						btn-checkbox btn-checkbox-true="0" 
+						btn-checkbox-false="1">
+						add fact
+					</button>
+
+					<div collapse="is_collapsed">
+						<div class="well well-lg">
+							<label for="fact_text">
+								What do you know about this issue?
+							</label>
+							<div class="form-group">
+								<textarea 
+									class="autogrow form-control"
+									id="fact_text"
+									ng-model="text">
+								</textarea>
+								<div class="small help-block" ng-hide="references.length<2">
+									<strong>Hint:</strong> Use numbers like [1]
+									or [2] to point to a specific reference.
+								</div>
+							</div>
+
+							<div class="form-horizontal">
+								<strong>Provide your references</strong>
+								<div class="bot-pad-med">
+									<fieldset 
+										class="bot-pad-0 sharp-bot-right"
+										ng-repeat="ref in references"
+										ng-class="{'bot-pad-med':!$last}" > 
+										<button 
+											ng-hide="$first"
+											ng-click="remove($index)"
+											type="button" 
+											class="pull-right close margin-top-neg-sm margin-bot-sm" 
+											aria-label="Close">
+											<span aria-hidden="true">
+												&times;
+											</span>
+										</button>
+										<div class="small margin-top-neg-sm pull-left grey">
+											Ref [{{$index+1}}]
+										</div>
+										<div class="clear form-group">
+											<label class="col-xs-2 control-label"
+												for="ref_link">Link:</label>
+											<div class="col-xs-10">
+												<input id="ref_link"
+													ng-model="ref.link" type="text"
+													class="form-control" 
+													placeholder="www.statcan.gc.ca/food-and-nutrition"/>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-xs-2 control-label"
+												for="ref_source">Source:</label>
+											<div class="col-xs-10">
+												<input id="ref_source" type="text"
+													ng-model="ref.source"
+													class="form-control" 
+													placeholder="Statistics Canada" />
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label class="col-xs-2 control-label"
+												for="ref_title">Title:</label>
+											<div class="col-xs-10">
+												<input id="ref_title" type="text"
+													ng-model="ref.title"
+													class="form-control" 
+													placeholder="Food and Nutrition by Province" />
+											</div>
+										</div>
+									</fieldset>
+									<a class="custom-border-1 pull-right" 
+										ng-click="add_ref()">
+										add another reference
+									</a>
+								</div>
+							</div>
+
+
+							<div class="btn-group" role="group" aria-label="...">
+								<button class="btn btn-sm btn-default"
+									ng-click="is_collapsed=!is_collapsed">
+									cancel</button>
+								<button class="btn btn-sm btn-primary"
+									ng-click="post_fact()">post</button-->
+							</div>
+						</div>
+					</div>
+
+					<div class="key_fact" ng-repeat="fact in facts">
+
+						<div class="visual_container_top">
+							<p>
+							{{ fact.text }}
+							</p>
+
+							<div class="social_actions">
+								<a>share</a>
+								<span class="dot blue"></span>
+								<a>support</a>
+								<span class="dot blue"></span>
+								<a>dispute</a>
+							</div>
+
+						</div>
+
+						<div class="visual_container_bot bot-pad-med">
+							<div class="reflist">
+								<li ng-repeat="ref in fact.refs" >
+								<a href="{{ref.url}}">
+									{{ ref.source }},
+									<span class="italic">{{ ref.title }}</span>
+								</a>
+								</li>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="contribution_row">
+						<a>see all</a>
+						<span class="dot blue"></span>
+						<a>5 pending review</a>
+					</div>
+
+				</div>
+				<!-- end key facts area -->
+
+				<!-- begin write to decision makers button -->
+				<div class="top_huge bottom_huge centering">
+					<div class="btn btn-default big-btn">
+						<div class="mail-ico right_med"></div>
+						<span class="centered">
+							write to <br/>decision makers
+						</span>
+					</div>
+				</div>
+				<!-- end write to decision makers button -->
+
+				<!-- begin in the news section -->
+				<div class="section" ng-controller="NewsCtrl">
+					<h2>In the News</h2>
+					<button type="button" 
+						class="heading_button btn btn-sm btn-primary" 
+						ng-model="is_collapsed" 
+						btn-checkbox btn-checkbox-true="0" 
+						btn-checkbox-false="1">
+						add news
+					</button>
+
+					<div collapse="is_collapsed">
+						<div class="well well-lg">
+							<div class="form-horizontal">
+								<div class="clear form-group">
+									<label class="col-xs-2 control-label"
+										for="ref_link">Link:</label>
+									<div class="col-xs-10">
+										<input id="ref_link"
+											ng-model="link" type="text"
+											class="form-control" 
+											placeholder="www.statcan.gc.ca/food-and-nutrition"/>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-xs-2 control-label"
+										for="ref_source">Source:</label>
+									<div class="col-xs-10">
+										<input id="ref_source" type="text"
+											ng-model="source"
+											class="form-control" 
+											placeholder="Statistics Canada" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-xs-2 control-label"
+										for="ref_title">Title:</label>
+									<div class="col-xs-10">
+										<input id="ref_title" type="text"
+											ng-model="title"
+											class="form-control" 
+											placeholder="Food and Nutrition by Province" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-xs-2 control-label"
+										for="ref_title">Date:</label>
+									<div class="col-xs-10">
+										<input id="ref_title" type="text"
+											ng-model="date"
+											class="form-control" 
+											placeholder="Food and Nutrition by Province" />
+									</div>
+								</div>
+							</div>
+
+							<label for="fact_text">
+								Brief summary?
+							</label>
+							<div class="form-group">
+								<textarea 
+									class="autogrow form-control"
+									id="fact_text"
+									ng-model="text">
+								</textarea>
+							</div>
+
+							<div class="btn-group" role="group" aria-label="...">
+								<button class="btn btn-sm btn-default"
+									ng-click="is_collapsed=!is_collapsed">
+									cancel</button>
+								<button class="btn btn-sm btn-primary"
+									ng-click="post()">post</button-->
+							</div>
+						</div>
+					</div>
+
+					<div class="news_item top_med bot-pad-med" 
+						ng-repeat="new in news">
+						<span class="bold">{{new.date}}</span>
+						<span class="source small caps">
+							{{new.source}}
+						</span><span>
+							{{new.text}}
+						</span>
+					</div>
+
+					<div class="contribution_row">
+						<a>see all</a>
+						<span class="dot blue"></span>
+						<a>5 pending review</a>
+					</div>
+
+				</div>
+				<!-- end in the news section -->
+
+				<!-- begin events section -->
+				<div class="section" ng-controller="EventsCtrl">
+					<h2>Events</h2>
+					<button type="button" 
+						class="heading_button btn btn-sm btn-primary" 
+						ng-model="is_collapsed" 
+						btn-checkbox btn-checkbox-true="0" 
+						btn-checkbox-false="1">
+						add event
+					</button>
+
+
+					<div collapse="is_collapsed">
+						<div class="well well-lg">
+							<div class="form-horizontal">
+
+								<div class="clear form-group">
+									<label class="col-xs-2 control-label"
+										for="ref_link">Link:</label>
+									<div class="col-xs-10">
+										<input id="ref_link"
+											ng-model="link" type="text"
+											class="form-control" 
+											placeholder="www.statcan.gc.ca/food-and-nutrition"/>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-xs-2 control-label"
+										for="ref_source">Date:</label>
+									<div class="col-xs-10">
+										<input id="ref_source" type="text"
+											ng-model="date"
+											class="form-control" 
+											placeholder="Statistics Canada" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-xs-2 control-label"
+										for="ref_title">Title:</label>
+									<div class="col-xs-10">
+										<input id="ref_title" type="text"
+											ng-model="title"
+											class="form-control" 
+											placeholder="Food and Nutrition by Province" />
+									</div>
+								</div>
+
+							</div>
+
+							<label for="fact_text">
+								Brief summary?
+							</label>
+							<div class="form-group">
+								<textarea 
+									class="autogrow form-control"
+									id="fact_text"
+									ng-model="text">
+								</textarea>
+							</div>
+
+							<div class="form-horizontal">
+								<div class="form-group">
+									<label class="col-xs-2 control-label"
+										for="ref_title">Icon:</label>
+									<div class="col-xs-10">
+										<input id="ref_title" type="text"
+											ng-model="icon"
+											class="form-control" 
+											placeholder="Food and Nutrition by Province" />
+									</div>
+								</div>
+							</div>
+
+							<div class="btn-group" role="group" aria-label="...">
+								<button class="btn btn-sm btn-default"
+									ng-click="is_collapsed=!is_collapsed">
+									cancel</button>
+								<button class="btn btn-sm btn-primary"
+									ng-click="post()">post</button-->
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="event top_med bot-pad-med"
+						ng-repeat="event in events"	>
+						<img class="ico" src="{{event.icon}}.png" />
+						<div class="event_text">
+							<span class="bold">{{event.date}}</span>
+							<span>{{ event.text }}</span>
+							<div class="social_actions">
+								<a>share</a>
+								<span class="dot blue"></span>
+								<a>support</a>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+
+				</div>
+				<!-- end events section -->
+
+
+			</div>
+			<div class="clear"></div>
+			<!-- end of right col -->
+		</div>
+		<!-- end of col wrapper -->
+
+	</body>
+</html>
