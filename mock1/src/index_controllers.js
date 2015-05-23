@@ -1,6 +1,16 @@
 var my_app = angular.module('my_app', ['ui.bootstrap', 'firebase']);
 alert('yo');
 
+my_app.controller('LetterCtrl',
+	function($scope) {
+		$scope.num_recipients_to_show = 2;
+		$scope.show_recipients = false;
+		$scope.toggle_recipients = function() {
+			$scope.show_recipients = !$scope.show_recipients;
+		}
+	}
+);
+
 my_app.controller('FeedCtrl',
 	function($scope, $firebaseArray){
 		var feed_ref = new Firebase(
@@ -55,7 +65,11 @@ my_app.controller('FeedCtrl',
 //			'image_url': 'coleman.jpg',
 //			'type': 'POST',
 //			'score': 29,
-//			'author': 'Gabriella Coleman',
+//			'author': {
+//				'name': 'Gabriella Coleman',
+//				'avatar_url': 'coleman.jpg',
+//				'rep': 32,
+//			},
 //			'comments': [{
 //				'created': 1234,
 //				'modified': 1234,

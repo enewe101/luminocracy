@@ -1,4 +1,7 @@
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.nav, .pagination, .carousel, .panel-title a { 
+	cursor: pointer; 
+	color: rgb(63, 165, 200);
+}
 
 h2 {
 	display: inline-block;
@@ -132,23 +135,41 @@ fieldset.invert {
 	background: url('star_active.png')
 }
 
+
+
+
 a, a:link {
-	color: #6868d3;
+	color: rgb(63, 165, 200);
 	text-decoration: none;
 	cursor: pointer;
 }
 
 a:visited {
-	color: #aaaae6;
+	color: rgb(63, 165, 200);
 }
 
 a:hover {
-	color: #6868d3;
+	color: rgb(63, 165, 200);
 }
 
 a:active {
-	color: #aaaae6;
+	color: rgb(63, 165, 200);
 }
+
+
+
+
+
+.accent, a.accent, a.accent:link
+a.accent:visited,
+a.accent:hover,
+a.accent:active {
+	color: rgb(255,102,0);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
 
 a#subscribe_link {
 	vertical-align: middle;
@@ -404,6 +425,7 @@ a#subscribe_link {
 .avatar {
 	width: 48px;
 	height: 48px;
+	border-radius: 50%;
 	background: url('avatar.png');
 }
 
@@ -446,6 +468,15 @@ a#subscribe_link {
 .small_text {
 	font-size: 12px;
 }
+
+.font-sm {
+	font-size: 12px;
+}
+
+.font-xs {
+	font-size: 8px;
+}
+
 .time_stamp {
 	float: right;
 	margin-right: 10px;
@@ -537,10 +568,55 @@ h3.letter_header {
 	margin-bottom: 14px;
 }
 
-
 .right_med {
 	margin-right: 16px;
 }
+
+
+
+
+
+
+.margin-right-md {
+	margin-right: 16px;
+}
+
+
+.margin-left-md {
+	margin-left: 16px;
+}
+
+.margin-top-md {
+	margin-top: 16px;
+}
+
+.margin-bot-md {
+	margin-bottom: 16px;
+}
+
+
+
+
+.margin-right-sm {
+	margin-right: 8px;
+}
+
+
+.margin-left-sm {
+	margin-left: 8px;
+}
+
+.margin-top-sm {
+	margin-top: 8px;
+}
+
+.margin-bot-sm {
+	margin-bottom: 8px;
+}
+
+
+
+
 
 .top_med {
 	margin-top: 16px;
@@ -787,12 +863,18 @@ h3.letter_header {
 .label-politics {
 	width: 75px;
 	color: white;
-	background: purple;
+	background: rgb(200,63,191);
 	text-align: center;
 	font-weight: bold;
 	font-size: 12px;
 	height: 26px;
 	padding-top: 4px;
+	border-radius: 4px;
+	margin-top: 4px;
+}
+
+.feed-item-icon {
+	width: 75px;
 	border-radius: 4px;
 }
 
@@ -801,8 +883,20 @@ h3.letter_header {
 	width: 75px;
 }
 
+.feed-item-content {
+	float: left;
+	width: calc(100% - 75px);
+}
+
 .feed-item-bot {
 	font-family: Lato, sans-serif;
+}
+
+.feed-item-social {
+	margin-top: 4px;
+	margin-bottom: -4px;
+	padding-left: 16px;
+	font-size: 12px;
 }
 
 .feed-item-top {
@@ -820,11 +914,6 @@ h3.letter_header {
 	border-bottom: solid 1px rgb(220,220,220);
 }
 
-.feed-item-icon {
-	width: 75px;
-	border-radius: 4px;
-	margin-top: 4px;
-}
 
 .section-item .date {
 	color: black;
