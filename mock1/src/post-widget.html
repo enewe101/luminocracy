@@ -1,0 +1,33 @@
+<div id="post_control" ng-controller="PostCtrl">
+
+	<textarea id="post-input" ng-model="post_text"
+		placeholder="what's happening?"
+		class="full_width" name="post"></textarea>
+
+	<div class="bottom_section">
+		<div class="social_option">
+			<input id="post_to_facebook" type="checkbox" 
+				name="post_to_facebook" />
+			<label for="post_to_facebook">
+				<img class="social_media_icon" 
+					src="facebook_ico.png" />
+			</label>
+		</div>
+
+		<div class="social_option">
+			<input id="post_to_twitter" type="checkbox" 
+				name="post_to_twitter" />
+			<label 
+				for="post_to_twitter">
+				<img class="social_media_icon" 
+					src="twitter_ico.png" />
+			</label>
+		</div>
+		<button type="button" ng-click="add_post()"
+			class="pull-right btn btn-accent btn-sm">
+			post
+		</button>
+		<div class="clear"></div>
+	</div>
+
+</div>

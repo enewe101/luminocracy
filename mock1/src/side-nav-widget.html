@@ -1,0 +1,133 @@
+<div ng-controller="OptionsCtrl">
+
+	<div class="centering">
+		<img src="leaf-emboss.png" />
+	</div>
+
+
+	<div class="big_plaque">
+		<div class="home_avatar_bar">
+
+			<img class="avatar" src="{{ user.avatar_url }}" />
+
+			<div class="user_deets">
+
+
+				<a class="username">
+					{{ user.name }}
+				</a>
+				<div class="user_rep">
+					<span class="rep_points">
+						{{ user.rep }}
+					</span>
+					<span class="rep_rep small_text">
+						reputation
+					</span>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="user_options"
+			ng-class="{'news-feed-active':feed.state=='all'}">
+			<div ng-click="feed.show('all')" 
+				ng-class="{'user-option-active':feed.state==='all', 'user-option':!(feed.state==='all')}">
+				<a>your newsfeed</a>
+				<span 
+					class="chevron glyphicon glyphicon-chevron-right"></span>
+			</div>
+
+			<div ng-click="feed.show('issues')" 
+				ng-class="{'user-suboption-active':feed.state=='issues', 'user-suboption':!(feed.state=='issues')}">
+				<a>watched issues</a>
+				<span class="chevron glyphicon glyphicon-chevron-right"></span>
+			</div>
+			<div ng-click="feed.show('location')" 
+				ng-class="{'user-suboption-active':feed.state=='location', 'user-suboption':!(feed.state=='location')}">
+				<a>news for your location</a>
+				<span class="chevron glyphicon glyphicon-chevron-right"></span>
+			</div>
+			<div ng-click="feed.show('followed')" 
+				ng-class="{'user-suboption-active':feed.state=='followed', 'user-suboption':!(feed.state=='followed')}">
+				<a>followed accounts</a>
+				<span class="chevron glyphicon glyphicon-chevron-right"></span>
+			</div>
+			<div ng-click="feed.show('own_posts')" 
+				ng-class="{'user-suboption-active':feed.state=='own_posts', 'user-suboption':!(feed.state=='own_posts')}">
+				<a>your posts</a>
+				<span class="chevron glyphicon glyphicon-chevron-right"></span>
+			</div>
+		</div>
+
+	</div>
+
+
+	<h2>followed accounts</h2>
+	<div id="followed_plaque" class="plaque" ng-controller="UserPostsCtrl">
+
+		<div class="avatar_bar_tiny">
+			<img src="coleman.jpg" class="avatar" />
+			<a class="username">
+				gabriella Coleman
+			</a>
+		</div>
+		<div class="avatar_bar_tiny">
+			<img src="david-cameron.jpg" class="avatar" />
+			<a class="username">
+				David Cameron
+			</a>
+		</div>
+		<div class="avatar_bar_tiny">
+			<img src="spidey.jpg" class="avatar" />
+			<a class="username">
+				Spider Man
+			</a>
+		</div>
+		<div class="show_more margin-bot-neg-med centering">
+			<a>
+				see all<br/>
+				<span class="glyphicon glyphicon-chevron-down"
+					aria-hidden="true"></span>
+			</a>
+		</div>
+	</div>
+
+	<h2>watched issues</h2>
+	<div class="plaque">
+
+		<div class="issue_bar_tiny">
+			<a class="issue_link">
+				<img src="keystone.jpg" class="issue_icon" />
+				<span class="issue_name">
+					Keystone XL Pipeline Extension
+				</span>
+			</a>
+		</div>
+
+		<div class="issue_bar_tiny">
+			<a class="issue_link">
+				<img src="election.jpg" class="issue_icon" />
+				<span class="issue_name">
+					UK Election 2015
+				</span>
+			</a>
+		</div>
+
+		<div class="issue_bar_tiny">
+			<a class="issue_link">
+				<img src="assange.jpg" class="issue_icon" />
+				<span class="issue_name">
+					Free Julian Assange
+				</span>
+			</a>
+		</div>
+
+		<div class="show_more margin-bot-neg-med centering">
+			<a>
+				see all<br/>
+				<span class="glyphicon glyphicon-chevron-down"
+					aria-hidden="true"></span>
+			</a>
+		</div>
+	</div>
+</div>

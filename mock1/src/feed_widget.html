@@ -1,0 +1,174 @@
+<div id="feed" ng-controller="FeedCtrl">
+
+	<div ng-repeat="item in feed.items" 
+		class="feed-item fade">
+
+		<!-- for items of typet POST -->
+		<div ng-if="item.type=='POST'" 
+			ng-controller="LetterCtrl">
+
+			<div class="feed-item-iconography">
+				<img src="word-bubble.png" 
+					class="feed-item-icon" />
+				<div class="label-{{item.topic}}">
+					{{ item.topic }}
+				</div>
+			</div>
+
+
+			<div class="feed-item-content">
+
+				<div class="feed-item-top">
+					<div class="feed-item-divider"></div>
+
+					<a>
+						<img class="avatar pull-left" 
+							src="{{ item.author.avatar_url }}"
+						/>
+						<div class="pull-left margin-left-sm">
+							<h3 class="feed-item-title">
+								{{ item.author.name }}
+							</h3>
+							<span class="accent">
+								{{ item.author.rep }} 
+							</span>
+							<span class='accent font-sm'>
+								reputation
+							</span>
+						</div>
+					</a>
+
+					<div class="clear"></div>
+				</div>
+
+				<div class="feed-item-bot">
+					<div ng-if="item.score>1"
+						class="accent margin-left-md font-sm feed-item-support">
+						{{ item.score-1 }} support this
+					</div>
+					{{ item.text }}
+					<a>read on</a>
+				</div>
+				<div class="feed-item-social">
+					<a>support</a>
+					<span class='dot'></span>
+					<a>share</a>
+					<span class='dot'></span>
+					<a>comment</a> 
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<!-- for items of type NEWS_CLUSTER -->
+		<div ng-if="item.type=='NEWS_CLUSTER'" 
+			ng-controller="LetterCtrl">
+
+			<div class="feed-item-iconography">
+				<img src="david-cameron.jpg" 
+					class="feed-item-icon" />
+				<div class="label-{{item.topic}}">
+					{{ item.topic }}
+				</div>
+			</div>
+
+
+			<div class="feed-item-content">
+
+				<div class="feed-item-top">
+					<div class="feed-item-divider"></div>
+					<a><h3 class="feed-item-title">
+						{{ item.title }}
+					</h3></a>
+					<div class="clear"></div>
+				</div>
+
+				<div class="feed-item-bot">
+					{{ item.text }}
+					<a>read on</a>
+				</div>
+				<div class="feed-item-social">
+					<a>support</a>
+					<span class='dot'></span>
+					<a>share</a>
+					<span class='dot'></span>
+					<a>comment</a> 
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+
+
+		<!-- for items of type NEWS_CLUSTER -->
+		<div ng-if="item.type=='LETTER'" 
+			ng-controller="LetterCtrl">
+
+			<div class="feed-item-iconography">
+				<img src="letter.png" 
+					class="feed-item-icon" />
+				<div class="label-politics">
+					politics
+				</div>
+			</div>
+
+
+			<div class="feed-item-content">
+				<div class="feed-item-top">
+
+					<div class="feed-item-divider"></div>
+
+					<a><h3 class="feed-item-title">
+							Letter &mdash; {{ item.title }}
+					</h3></a>
+
+					<!-- list of recipients -->
+					<div class="margin-left-md margin-top-sm">
+						<span 
+							class="attn pull-left margin-right-sm"
+						></span>
+						<span class="pull-left">
+							<span ng-repeat="recipient in item.attn.slice(0,num_recipients_to_show)">
+								{{ recipient }}<br/>
+							</span>
+							<a class="accent" ng-click="toggle_recipients()">
+								and 
+								{{ item.attn.length-num_recipients_to_show }} 
+								others 
+								<span 
+									ng-if="!show_recipients"
+									class="font-sm glyphicon glyphicon-chevron-right"></span>
+								<span 
+									ng-if="show_recipients"
+									class="font-sm glyphicon glyphicon-chevron-down"></span>
+							</a>
+							<span ng-show="show_recipients">
+								<span ng-repeat="recipient in item.attn.slice(num_recipients_to_show)">
+									<br/>{{ recipient }}
+								</span>
+							</span>
+						</span>
+					</div>
+					<!-- end of recipients list -->
+
+					<div class="clear"></div>
+
+				</div>
+
+				<div class="feed-item-bot">
+					{{ item.text }}
+					<a>read on</a>
+				</div>
+				<div class="feed-item-social">
+					<a>support</a>
+					<span class='dot'></span>
+					<a>share</a>
+					<span class='dot'></span>
+					<a>comment</a> 
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+

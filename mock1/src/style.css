@@ -14,6 +14,13 @@ h2 {
 	vertical-position: middle;
 }
 
+.btn, .btn:hover {
+	box-shadow: 1px 1px 2px rgba(255,255,255, 0.2) inset;
+}
+.btn:active {
+	box-shadow: 1px 1px 2px rgba(0,0,0, 0.2) inset;
+}
+
 .heading_button {
 	margin-top: -12px;
 	margin-left: 20px;
@@ -23,6 +30,7 @@ body {
 	padding: 0;
 	margin: 0;
 	background: url('crazy.jpg');
+	background: white;
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -241,10 +249,10 @@ a#subscribe_link {
 .big_plaque {
 	width: 90%;
 	margin: auto;
-	background: rgb(200,55,55);
+	background: rgba(190, 52, 20, 0.6);
 	border: solid 1px rgb(128,0,0);
 	padding: 20px;
-	margin-top: 30px;
+	margin-top: 10px;
 	margin-bottom: 30px;
 	border-radius: 3px;
 }
@@ -252,7 +260,7 @@ a#subscribe_link {
 .plaque {
 	width: 80%;
 	margin: auto;
-	background: rgb(200,55,55);
+	background: rgba(190, 52, 20, 0.6);
 	border: solid 1px rgb(128,0,0);
 	padding: 20px;
 	margin-bottom: 30px;
@@ -417,9 +425,69 @@ a#subscribe_link {
 	margin-top: 10px;
 }
 
-.user_option {
-	font-size: 26px;
+
+.user-suboption, .user-suboption-active {
+	font-size: 18px;
+	padding-left: 32px;
+}
+
+.user-suboption a {
+	color: rgba(255,255,255,0.7);
+}
+
+.user-suboption:hover a, .user-suboption-active a {
+	color: white;
+}
+
+.user-suboption .chevron {
+	display: none;
+}
+
+.user-suboption:hover .chevron, .user-suboption-active .chevron {
+	display: inline;
+}
+
+.news-feed-active .user-suboption a { 
+	color: white;
+}
+
+.fade.ng-enter {
+	transition: 0.25s linear all;
+	opacity: 0;
+	max-height: 0;
+	overflow:hidden;
+	padding-top:0;
+	padding-bottom:0;
 	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 0px;
+}
+
+.fade.ng-enter-stagger {
+	transition-delay: 0.1s;
+	transition-duration: 0s;
+}
+
+.fade.ng-enter.ng-enter-active {
+	opacity: 1;
+	max-height: 200px;
+	overflow:hidden;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	padding-left: 14px;
+	padding-right: 14px;
+	margin-bottom: 20px;
+}
+
+.fade {
+	opacity: 1;
+	max-height: none;
+	overflow:hidden;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	padding-left: 14px;
+	padding-right: 14px;
+	margin-bottom: 20px;
 }
 
 .avatar {
@@ -435,6 +503,36 @@ a#subscribe_link {
 	background: white;
 	padding: 10px;
 	margin-bottom: 24px;
+}
+
+
+.user-option, .user-option-active {
+	font-size: 26px;
+	padding-left: 16px;
+}
+
+.user-option-active a {
+	color: white;
+}
+
+.user-option a {
+	color: rgba(255,255,255,0.7);
+}
+
+.user-option:hover a {
+	color: white;
+}
+
+.user-option .chevron {
+	display: none;
+}
+
+.user-option-active .chevron {
+	display: inline;
+}
+
+.user-option:hover .chevron {
+	display: inline;
 }
 
 .avatar_row {
@@ -577,6 +675,27 @@ h3.letter_header {
 
 
 
+.margin-right-lg {
+	margin-right: 32px;
+}
+
+
+.margin-left-lg {
+	margin-left: 32px;
+}
+
+.margin-top-lg {
+	margin-top: 32px;
+}
+
+.margin-bot-lg {
+	margin-bottom: 32px;
+}
+
+
+
+
+
 .margin-right-md {
 	margin-right: 16px;
 }
@@ -712,26 +831,27 @@ h3.letter_header {
 .column_wrapper {
 	position:relative;
 }
-#side_nav, #side_nav:before {
+#side-nav, #side-nav:before {
 	width: 400px;
 }
-#side_nav {
+#side-nav {
 	float: left;
 	padding: 20px;
 	color: white;
 	font-family: 'Open Sans', sans-serif;
 }
-#side_nav:before {
+#side-nav:before {
 	content: '';
 	position: absolute;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	z-index: -1;
-	background: rgb(203, 70, 67);
+	background: rgb(230,55,20) url('embroidery.png');
+	border: solid 1px rgb(128,0,0);
 }
 
-#side_nav h2 {
+#side-nav h2 {
 	display: block;
 	width: 80%;
 	margin: auto;
@@ -741,9 +861,6 @@ h3.letter_header {
 	font-weight: normal;
 }
 
-#side_nav a {
-	color: white;
-}
 
 #center_lane, #center_lane:before {
 	width: 600px;
@@ -814,7 +931,7 @@ h3.letter_header {
 	border-bottom: solid 1px rgb(220,220,220);
 	border-left: solid 1px rgb(220,220,220);
 	border-right: solid 1px rgb(220,220,220);
-	padding: 6px;
+	padding: 8px;
 }
 
 .full_width {
@@ -832,8 +949,38 @@ h3.letter_header {
 	padding: 6px;
 }
 
-#post_input {
+#post-input {
 	height: 100px;
+	/*box-shadow: 0px 0 2px rgba(0,0,0,0.1) inset;*/
+	border-top: solid 1px rgb(220,220,220);
+	border-left: solid 1px rgb(220,220,220);
+	border-right: solid 1px rgb(230,230,230);
+	border-bottom: solid 1px rgb(230,230,230);
+	border-radius: 8px 8px 0 0;
+	background: rgb(253,253,253);
+	width: 100%;
+	padding: 8px;
+}
+
+.prompt {
+	color: rgb(120,120,120);
+	text-shadow: 1px 1px 1px rgba(255,255,255,1);
+	padding: 0 0 4px 16px;
+	font-size: 20px;
+}
+
+.btn-accent, .btn-accent:hover {
+	color: white;
+	font-weight: bold;
+	padding: 2px 8px 4px 8px;
+}
+
+.btn-accent {
+	background: rgb(255,102,0);
+}
+
+.btn-accent:hover {
+	background: rgb(255,140,37);
 }
 
 .social_media_icon {
@@ -852,6 +999,13 @@ h3.letter_header {
 .feed-item {
 	padding: 14px;
 	margin-bottom: 20px;
+	border-radius: 10px;
+	background: white;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+	border-top: solid 1px rgb(230,230,230);
+	border-left: solid 1px rgb(230,230,230);
+	border-right: solid 1px rgb(220,220,220);
+	border-bottom: solid 1px rgb(220,220,220);
 }
 
 .feed-item-title {
@@ -983,4 +1137,20 @@ h3.letter_header {
 }
 .section-item-avatar {
 	border-radius: 50%;
+}
+
+.overdark {
+	text-shadow: 0px 1px rgba(0,0,0,0.6);
+}
+
+.sunk {
+	text-shadow: 0px 1px rgba(0,0,0,0.6), 0px 1px rgba(255,255,255,0.6);
+}
+
+.underlight {
+	text-shadow: 0px 1px rgba(255,255,255,0.6);
+}
+
+.font-grey {
+	color: rgb(180,180,180);
 }
