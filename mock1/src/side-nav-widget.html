@@ -10,7 +10,7 @@
 
 			<img class="avatar" src="{{ user.avatar_url }}" />
 
-			<div class="user_deets">
+			<div class="margin-left-md user-deets">
 
 
 				<a class="username">
@@ -65,10 +65,10 @@
 	<h2>followed accounts</h2>
 	<div id="followed_plaque" class="plaque" ng-controller="UserPostsCtrl">
 
-		<div class="avatar_bar_tiny">
-			<img src="coleman.jpg" class="avatar" />
+		<div ng-repeat="u in following" class="avatar_bar_tiny">
+			<img src="{{ u.avatar_url }}" class="avatar" />
 			<a class="username">
-				gabriella Coleman
+				{{ u.name }}
 			</a>
 		</div>
 		<div class="avatar_bar_tiny">

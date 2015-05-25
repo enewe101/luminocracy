@@ -1,6 +1,67 @@
 var my_app = angular.module('my_app', ['ngAnimate', 'ui.bootstrap', 'firebase']);
 alert('yo');
 
+// Service to make the logged in user's info available app-wide
+my_app.service('User', ['$q', function($q) {
+
+	// to reference context in callbacks
+	var that = this;
+
+	// reference to the user namespace in firebase
+	var base_url = 'https://vivid-torch-4114.firebaseio.com/users';
+
+	// loads a specific user's info
+	this.load = function(username) {
+		alert('loading');
+		var full_url = base_url + '/' + username;
+		var ref = new Firebase(full_url);
+
+		ref.once('value', function(snapshot) {
+			var user = snapshot.val();
+
+			// copy user values to service so they're available app-wide
+			that.name = user.name;
+			that.following = user.following;
+			that.avatar_url = user.avatar_url;
+			that.rep = user.rep;
+		});
+	}
+
+	// get's a certain user's info, for usage by the caller
+	this.get_user = function(username) {
+		var deferred = $q.defer();
+
+		var full_url = base_url + '/' + username;
+		var ref = new Firebase(full_url);
+
+		ref.once('value', function(snapshot) {
+			var user = snapshot.val();
+			deferred.resolve(user);
+		});
+
+		return deferred.promise;
+	}
+}]);
+
+		//	resolve('ok');
+		//	//var full_url = base_url + '/' + username;
+		//	//var ref = new Firebase(full_url);
+
+		//	//var retrieved_user = {};
+		//	//ref.once('value', function(snapshot) {
+		//	//	var user = snapshot.val();
+
+		//	//	// copy user values to service so they're available app-wide
+		//	//	retrieved_user = user.name;
+		//	//	retrieved_user = user.following;
+		//	//	retrieved_user = user.avatar_url;
+		//	//	retrieved_user = user.rep;
+
+		//	//	resolve(retrieved_user);
+		//	//});
+		//});
+
+
 my_app.service('feed', function() {
 
 	// to reference context in callbacks
@@ -63,7 +124,8 @@ my_app.service('feed', function() {
 
 });
 
-my_app.run(function($rootScope, $firebaseObject, $firebaseArray) {
+
+my_app.run(['$rootScope', 'User', function($rootScope, User) {
 
 	var ref = new Firebase(
 			'https://vivid-torch-4114.firebaseio.com');
@@ -71,18 +133,88 @@ my_app.run(function($rootScope, $firebaseObject, $firebaseArray) {
 	var users_ref = new Firebase(
 			'https://vivid-torch-4114.firebaseio.com/users');
 
-	var syncObject = $firebaseObject(ref);
-
 	$rootScope.user = {
 		'name': 'New User ',
 		'avatar_url': 'guest.jpg',
 		'rep': 42
 	};
-	
-});
 
-my_app.controller('OptionsCtrl', ['$scope', 'feed', function($scope, feed) {
+	User.load('MC Hammer');
+	
+//	users_ref.set({
+//		'Tina Fey': {
+//			'name': 'Tina Fey',
+//			'avatar_url': 'tina.jpg',
+//			'reputation': 87299,
+//			'following': {
+//				'Penney':true, 'Charlie Sheen':true, 
+//				'Cat Woman':true, 'Spiderman':true, 'MC Hammer':true
+//			}
+//		},
+//		'MC Hammer': {
+//			'name': 'MC Hammer',
+//			'avatar_url': 'hammer.jpg',
+//			'rep': '2 legit',
+//			'following': {
+//				'Tina Fey':true, 'Penney':true, 'Charlie Sheen':true,
+//				'Cat Woman':true, 'Spiderman':true
+//			}
+//		},
+//		'Penny': {
+//			'name': 'Penny',
+//			'avatar_url': 'penney.jpg',
+//			'rep': 42000,
+//			'following': {
+//				'Tina Fey':true, 'Charlie Sheen':true, 'Cat Woman':true,
+//			   	'Spiderman':true, 'MC Hammer':true
+//			}
+//		},
+//		'Charlie Sheen': {
+//			'name': 'Charlie Sheen',
+//			'avatar_url': 'charlie.jpg',
+//			'rep': -999,
+//			'following': {
+//				'Tina Fey':true, 'Cat Woman':true, 'Spiderman':true, 
+//				'MC Hammer':true, 'Penney':true
+//			}
+//		},
+//		'Cat Woman': {
+//			'name': 'Cat Woman',
+//			'avatar_url': 'cat.jpg',
+//			'rep': 72000,
+//			'following': {
+//				'Spiderman':true, 'MC Hammer':true, 'Penney':true, 
+//				'Charlie Sheen':true, 'Tina Fey':true
+//			}
+//		},
+//		'Spiderman': {
+//			'name': 'Spiderman',
+//			'avatar_url': 'spidey.jpg',
+//			'rep': 64,
+//			'following': {
+//				'MC Hammer':true, 'Penney':true, 'Charlie Sheen':true, 
+//				'Cat Woman':true, 'Tina Fey':true
+//			}
+//		}
+//	});
+
+}]);
+
+
+my_app.controller('OptionsCtrl', ['$scope', 'feed', 'User',
+function($scope, feed, User) {
+
 	$scope.feed = feed;
+
+	feed_ref = new Firebase(
+		'https://vivid-torch-4114.firebaseio.com/feed');
+
+
+	$scope.following = [];
+
+	$scope.$watch(function(){User.name}, function() {
+		alert(User.toSource());
+	})
 
 }]);
 
