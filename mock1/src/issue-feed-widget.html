@@ -1,0 +1,235 @@
+<div id="issue-page-right-lane-container" ng-controller="IssueCtrl">
+	<div id="writeup" class="margin-bot-med">
+
+		<img class="issue-head-image" src="keystone-big.jpg" />
+
+		<div class="writeup-text">
+			<h1>{{ issue.name }}</h1>
+			<p>
+			{{ issue.text }}
+			</p>
+			<div ng-controller="SubscribeCtrl">
+				<div id="subscribe_widget" ng-click="toggle_subscribe()">
+					<div id="subscribe_icon" 
+						ng-class='sub_class'></div>
+					<a id="subscribe_link">
+						{{ sub_text }}
+					</a>
+				</div>
+			</div>
+			<script type="text/javascript">
+			</script>
+		</div>
+	</div>
+
+	<div ng-controller="IssuePostCtrl">
+
+		<div id="post_widget">
+			<div class="avatar left" id="avatar_bar"></div>
+			<div id="post_bar">
+				<div id="post_prompt"></div>
+
+				<div class="visual_container" id="post_control_wrapper">
+
+					<textarea class="autogrow" id="post_textarea"
+						placeholder="what's your opinion?" 
+						ng-model="post_text"
+						></textarea>
+
+					<div id="post_bottom_line">
+						<a id="post_link" 
+							ng-click="put_post()">
+							post
+						</a>
+					</div>
+
+				</div>
+
+			</div>
+			<div class="clear"></div>
+
+		</div>
+
+			<div class="centered">
+				<h2 class="centered font-grey underlight margin-bot-lg">What people are saying:</h2>
+			</div>
+
+
+			<div class="opinion_container" ng-repeat="post in issue.posts">
+
+				<div class="avatar_row">
+
+					<span class="opinion_avatar avatar inline-block">
+					</span>
+
+					<div class="user_deets">
+						<a class="username">
+							{{ post.author.name }}
+						</a>
+						<div class="user_rep">
+							<span class="rep_points">
+								{{post.user.rep}}
+							</span>
+							<span class="rep_rep small_text">
+								reputation
+							</span>
+						</div>
+					</div>
+					<div class="time_stamp small_text">4 hrs</div>
+
+				</div>
+
+				<div class="opinion_text">
+					{{ post.text }}
+				</div>
+				<div class="social_actions">
+					<a>share</a>
+					<span class="dot blue"></span>
+					<a>support</a>
+					<span class="dot blue"></span>
+					<a>comment</a>
+				</div>
+			</div>
+
+
+		</div>
+
+		<div id="opninions">
+
+
+			<div class="opinion_container" ng-repeat="post in Issue.posts">
+
+				<div class="avatar_row">
+
+					<span class="opinion_avatar avatar inline-block">
+					</span>
+
+					<div class="user_deets">
+						<a class="username">Ricci Martin</a>
+						<div class="user_rep">
+							<span class="rep_points">1324</span>
+							<span class="rep_rep small_text">
+								reputation
+							</span>
+						</div>
+					</div>
+					<div class="time_stamp small_text">4 hrs</div>
+
+				</div>
+
+				<div class="opinion_text">
+					<p>
+					The pipeline will be made out of mashed
+					potatoes and re-patriated journalists.  It will
+					be approximately 17 inches long and will weight
+					about as much as a typical house cat.
+					</p>
+					<p>
+					I hate this pipeline almost as much as I hate
+					my neighbors.
+					</p>
+				</div>
+				<div class="social_actions">
+					<a>share</a>
+					<span class="dot blue"></span>
+					<a>support</a>
+					<span class="dot blue"></span>
+					<a>comment</a>
+				</div>
+			</div>
+
+			<div class="letter">
+				<div class="letter_border">
+					<h3 class="letter_header">Stop Keystone XL</h3>
+					<div class="letter_indent">
+						<span class="attn"></span><br/>
+						<div class="recipients further_indent">
+							<span class="recipient bold small_text">
+								Stephen Harper
+							</span><br/>
+							<span class="recipient bold small_text">
+								Elizabeth May
+							</span><br/>
+							<span class="recipient bold small_text">
+								Thomas Mulcair
+							</span><br/>
+							<a class="small_text">And 7 others</a>
+						</div>
+					</div>
+					<div class="letter_body">
+						<p>
+						I do not support the project to expand the
+						Keystone Pipeline System. This proposal
+						generates serious and certain environmental
+						losses, which do not justify the economic
+						gains. Furthermore, the development will
+						bring wealth mainly to foreign
+						shareholders, so that the actual economic
+						gains will be much less than they should
+						be.
+						</p>
+						<p>
+						Lorem ipsum dolor sit amet, consectetur
+						adipiscing elit, sed do eiusmod tempor
+						incididunt ut labore et dolore magna
+						aliqua. Ut enim ad minim veniam, quis
+						nostrud exercitation ullamco laboris nisi
+						ut aliquip ex ea commodo consequat.  Duis
+						aute irure dolor in reprehenderit in
+						voluptate velit esse cillum dolore eu
+						fugiat nulla pariatur. Excepteur sint
+						occaecat cupidatat non proident, sunt in
+						culpa qui officia deserunt mollit anim id
+						est laborum.
+						</p>
+					</div>
+					<div class="letter_indent">
+						<div class="pleasantry">
+							Sincerely,
+						</div>
+					</div>
+					<div class="senders">
+						<div class="main_sender">
+							<span class="opinion_avatar avatar inline-block">
+							</span>
+							<div class="user_deets right_med">
+								<a class="username">Ricci Martin</a><br/>
+								<div class="user_rep">
+									<span class="rep_points">1324</span>
+									<span class="rep_rep small_text">
+										reputation
+									</span>
+								</div>
+							</div>
+							<div class="vert_sep_36 inline-block">
+							</div>
+							<div class="inline-block left_med">
+								<div>
+									<a class="left_small small_text">
+										and 37 others
+									</a>
+								</div>
+								<span>
+									<span class="avatar_small">
+									</span>
+									<span class="avatar_small">
+									</span>
+									<span class="avatar_small">
+									</span>
+									<span class="avatar_small">
+									</span>
+									<span class="avatar_small">
+									</span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+				<div class="letter_corner"> </div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

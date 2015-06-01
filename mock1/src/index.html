@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<title>Mockup</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
@@ -30,6 +31,7 @@
 		<script type="text/javascript" src="firebase.js"></script>
 		<script type="text/javascript" src="angularfire.js"></script>
 		<script type="text/javascript" src="index_controllers.js"></script>
+		<script type="text/javascript" src="issue_controllers.js"></script>
 
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -47,18 +49,52 @@
 			</div>
 
 			<!-- center column -->
-			<div id="center_lane" class="centering">
-				<div ng-include="'post-widget.html'"></div>
-				<h2 ng-controller="FeedStatusCtrl" 
-					class="margin-top-lg font-grey underlight">
-					{{ feed_status }}
-				</h2>
-				<div ng-include="'feed_widget.html'"></div>
+			<div id="center-lane" ng-controller="ContentCtrl">
+
+				<div class="centering" ng-show="view_mode.view_mode=='home_feed'">
+					<div ng-include="'post-widget.html'"></div>
+					<h2 ng-controller="FeedStatusCtrl" 
+						class="margin-top-lg font-grey underlight">
+						{{ feed_status }}
+					</h2>
+					<div ng-include="'feed_widget.html'"></div>
+				</div>
+
+				<div class="centering" 
+					ng-show="view_mode.view_mode=='issue_page'">
+
+					<div ng-include="'issue-description-widget.html'"></div>
+
+					<div ng-include="'post-widget.html'"></div>
+
+					<h2 ng-controller="FeedStatusCtrl" 
+						class="margin-top-lg font-grey underlight">
+						What people are saying:
+					</h2>
+
+					<div ng-include="'feed_widget.html'"></div>
+
+				</div>
+
 			</div>
 
 			<!-- right column -->
-			<div id="right_lane">
-				<div ng-include="'right-nav-widget.html'"></div>
+			<div id="right_lane" ng-controller="ContentCtrl">
+
+				<div ng-show="view_mode.view_mode=='home_feed'">
+					<div id="home-feed-right-lane-bg"></div>
+					<div id="home-feed-right-lane"
+						ng-include="'right-nav-widget.html'"></div>
+				</div>
+
+
+				<div ng-show="view_mode.view_mode=='issue_page'">
+					<div id="issue-page-right-lane-bg"></div>
+					<div id="issue-page-right-lane"
+						ng-include="'issue-margin-widget.html'">
+					</div>
+				</div>
+
 			</div>
 
 			<div class="clear"></div>

@@ -8,6 +8,45 @@ h2 {
 	vertical-position: middle;
 }
 
+ul {
+	margin: 0;
+	padding: 0;
+}
+li {
+	margin:0;
+	padding:0;
+}
+li:before {
+	content: '<span class="glyphicon glyphicon-chevron-right"></span>';
+}
+
+.news-item {
+	margin-bottom: 10px;
+}
+.news-item-icon {
+	float:left;
+	width:75px;
+	margin-right: 5px;
+
+	border-radius: 2px;
+	background: white;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.05) inset;
+	border-bottom: solid 1px rgb(230,230,230);
+	border-right: solid 1px rgb(230,230,230);
+	border-left: solid 1px rgb(220,220,220);
+	border-top: solid 1px rgb(220,220,220);
+
+	overflow: hidden;
+}
+.news-item-icon img {
+	width: 100%;
+	height: auto;
+}
+.news-item-info {
+	float: left;
+	width: calc(100% - 80px);
+}
+
 
 .inline-block {
 	display: inline-block;
@@ -30,7 +69,7 @@ body {
 	padding: 0;
 	margin: 0;
 	background: url('crazy.jpg');
-	background: white;
+	background: url('halftone.png');
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -44,11 +83,32 @@ h1 {
 }
 
 #writeup {
-	border: solid 1px rgb(220,220,220);
-	border-radius: 10px;
 	background: white;
+	border-radius: 2px;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+	border-top: solid 1px rgb(230,230,230);
+	border-left: solid 1px rgb(230,230,230);
+	border-right: solid 1px rgb(220,220,220);
+	border-bottom: solid 1px rgb(220,220,220);
+	overflow: hidden;
+	margin-top: -20px;
+	margin-left: -20px;
+	margin-right: -20px;
+}
+
+.issue-head-image {
+	width: 100%;
+	height: auto;
+	border-radius: 2px 2px 0px 0px;
+}
+
+.writeup-text {
 	padding: 20px;
 }
+
+.issue-head-image {
+}
+
 
 .visual_container {
 	border: solid 1px rgb(220,220,220);
@@ -104,11 +164,23 @@ fieldset.invert {
 	padding: 10px;
 }
 
+#issue-margin {
+	font-size: 12px;
+}
+
+#issue-margin .social_actions {
+	font-size: 10px;
+}
+
+#issue-margin h2 {
+	text-shadow: 1px 1px rgba(255,255,255,0.6);
+}
 
 .reflist {
 	list-style-type: none;
 	counter-reset: ref-counter;
 	color: green;
+	font-size: 10px;
 }
 
 .reflist li:before {
@@ -247,7 +319,7 @@ a#subscribe_link {
 }
 
 .big_plaque {
-	width: 90%;
+	width: 100%;
 	margin: auto;
 	background: rgba(190, 52, 20, 0.6);
 	border: solid 1px rgb(128,0,0);
@@ -258,8 +330,9 @@ a#subscribe_link {
 }
 
 .plaque {
-	width: 80%;
-	margin: auto;
+	width: (100% - 20px);
+	margin-left: 10px;
+	margin-right: 10px;
 	background: rgba(190, 52, 20, 0.6);
 	border: solid 1px rgb(128,0,0);
 	padding: 20px;
@@ -351,6 +424,9 @@ a#subscribe_link {
 	margin-top: 16px;
 	margin-bottom: 16px;
 }
+.centered {
+	text-align: center;
+}
 .centering {
 	text-align: center;
 }
@@ -401,12 +477,45 @@ a#subscribe_link {
 	line-height: 20px;
 }
 
-.avatar_bar_tiny {
+.avatar_bar_tiny, .avatar_bar_tiny_active {
 	margin-top: 6px;
 	margin-bottom: 6px;
 }
 
-.avatar_bar_tiny .avatar {
+.issue_bar_tiny, .issue_bar_tiny_active {
+	margin-left: 6px;
+}
+
+.issue_bar_tiny_active .issue_icon,
+.issue_bar_tiny .issue_icon {
+	border-radius: 3px;
+	width: 28px;
+	height: 28px;
+}
+
+.issue_bar_tiny_active a, .issue_bar_tiny:hover a {
+	color: white
+}
+
+.issue_bar_tiny .chevron {
+	display: none;
+}
+.issue_bar_tiny_active .chevron, issue_bar_tiny:hover .chevron {
+	display: inline;
+}
+
+.issue_bar_tiny a {
+	color: rgba(255,255,255,0.7);
+}
+
+.issue_bar_tiny, .issue_bar_tiny_active {
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+
+.avatar_bar_tiny .avatar,
+.avatar_bar_tiny_active .avatar {
 	border-radius: 50%;
 	height: 28px;
 	width: 28px;
@@ -414,6 +523,7 @@ a#subscribe_link {
 	vertical-align: middle;
 }
 
+#followed_plaque .avatar_bar_tiny_active a.username,
 #followed_plaque .avatar_bar_tiny a.username {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: normal;
@@ -523,6 +633,7 @@ a#subscribe_link {
 	color: white;
 }
 
+
 .user-option .chevron {
 	display: none;
 }
@@ -532,6 +643,26 @@ a#subscribe_link {
 }
 
 .user-option:hover .chevron {
+	display: inline;
+}
+
+.avatar_bar_tiny_active a {
+	color: white;
+}
+
+.avatar_bar_tiny a {
+	color: rgba(255,255,255,0.7);
+}
+
+.avatar_bar_tiny:hover a {
+	color: white;
+}
+
+.avatar_bar_tiny .chevron {
+	display: none;
+}
+
+.avatar_bar_tiny:hover .chevron {
 	display: inline;
 }
 
@@ -862,34 +993,38 @@ h3.letter_header {
 }
 
 
-#center_lane, #center_lane:before {
+#center-lane, #center-lane:before {
 	width: 600px;
 }
 
-#center_lane {
+#center-lane {
 	float: left;
 	padding: 40px;
 }
 
-#center_lane:before {
+#center-lane:before {
 	content: '';
 	position: absolute;
 	top: 0;
 	left: 400px;
 	bottom: 0;
 	z-index: -1;
-	background: url('halftone.png');
-	border-right: solid 1px rgb(220,220,220);
 }
 
-
-#right_lane, #right_lane:before {
-	width: calc(100% - 1000px);
-}
 #right_lane {
 	float:left;
+}
+
+#home-feed-right-lane {
 	padding: 30px;
 	font-size: 18px;
+}
+#issue-page-right-lane {
+	padding-right: 20px;
+}
+
+#right_lane, #right_lane:before, #home-feed-right-lane-bg, #issue-page-right-lane-bg {
+	width: calc(100% - 1000px);
 }
 
 #right_lane:before {
@@ -899,7 +1034,22 @@ h3.letter_header {
 	bottom: 0;
 	left: 1000px;
 	z-index: -1;
+}
+
+#home-feed-right-lane-bg, #issue-page-right-lane-bg {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 1000px;
+	z-index: -1;
+}
+
+#issue-page-right-lane-bg {
+	background: transparent;
+}
+#home-feed-right-lane-bg {
 	background: white;
+	border-left: solid 1px rgb(220,220,220);
 }
 
 .clear {
@@ -910,20 +1060,6 @@ h3.letter_header {
 	line-height: 10px;
 }
 
-.issue_bar_tiny .issue_name {
-	margin-left: 6px;
-}
-
-.issue_bar_tiny .issue_icon {
-	border-radius: 3px;
-	width: 28px;
-	height: 28px;
-}
-
-.issue_bar_tiny {
-	margin-top: 6px;
-	margin-bottom: 6px;
-}
 
 .bottom_section {
 	border-radius: 0 0 8px 8px;
@@ -994,6 +1130,37 @@ h3.letter_header {
 
 #feed {
 	margin-top: 30px;
+}
+
+.card {
+	padding: 14px;
+	border-radius: 2px;
+	background: white;
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+	border-top: solid 1px rgb(230,230,230);
+	border-left: solid 1px rgb(230,230,230);
+	border-right: solid 1px rgb(220,220,220);
+	border-bottom: solid 1px rgb(220,220,220);
+}
+
+#actors_list {
+}
+.actor {
+	border-top: solid 1px rgb(240,240,240);
+	padding-top: 10px;
+	margin-top: 10px;
+}
+.actor:first-of-type {
+	border: none;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.send-right {
+	text-align: right;
+}
+.send-right * {
+	text-align: left;
 }
 
 .feed-item {
@@ -1154,3 +1321,4 @@ h3.letter_header {
 .font-grey {
 	color: rgb(180,180,180);
 }
+

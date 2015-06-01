@@ -1,0 +1,23 @@
+<div id="writeup" class="margin-bot-lg" ng-controller="IssueCtrl">
+
+	<img class="issue-head-image" src="{{ issue.image_url }}" />
+
+	<div class="writeup-text">
+		<h1>{{ issue.name }}</h1>
+		<p>
+		{{ issue.text }}
+		</p>
+		<div ng-controller="SubscribeCtrl">
+			<div id="subscribe_widget" ng-click="toggle_subscribe()">
+				<div id="subscribe_icon" 
+					ng-class='sub_class'></div>
+				<a id="subscribe_link">
+					{{ sub_text }}
+				</a>
+			</div>
+		</div>
+		<script type="text/javascript">
+		</script>
+	</div>
+</div>
+

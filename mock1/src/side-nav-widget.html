@@ -30,29 +30,29 @@
 
 		<div class="user_options"
 			ng-class="{'news-feed-active':feed.state=='all'}">
-			<div ng-click="feed.show('all')" 
+			<div ng-click="show_feed('all')" 
 				ng-class="{'user-option-active':feed.state==='all', 'user-option':!(feed.state==='all')}">
 				<a>your newsfeed</a>
 				<span 
 					class="chevron glyphicon glyphicon-chevron-right"></span>
 			</div>
 
-			<div ng-click="feed.show('issues')" 
+			<div ng-click="show_feed('issues')" 
 				ng-class="{'user-suboption-active':feed.state=='issues', 'user-suboption':!(feed.state=='issues')}">
 				<a>watched issues</a>
 				<span class="chevron glyphicon glyphicon-chevron-right"></span>
 			</div>
-			<div ng-click="feed.show('location')" 
+			<div ng-click="show_feed('location')" 
 				ng-class="{'user-suboption-active':feed.state=='location', 'user-suboption':!(feed.state=='location')}">
 				<a>news for your location</a>
 				<span class="chevron glyphicon glyphicon-chevron-right"></span>
 			</div>
-			<div ng-click="feed.show('followed')" 
+			<div ng-click="show_feed('followed')" 
 				ng-class="{'user-suboption-active':feed.state=='followed', 'user-suboption':!(feed.state=='followed')}">
 				<a>followed accounts</a>
 				<span class="chevron glyphicon glyphicon-chevron-right"></span>
 			</div>
-			<div ng-click="feed.show('own_posts')" 
+			<div ng-click="show_feed('own_posts')" 
 				ng-class="{'user-suboption-active':feed.state=='own_posts', 'user-suboption':!(feed.state=='own_posts')}">
 				<a>your posts</a>
 				<span class="chevron glyphicon glyphicon-chevron-right"></span>
@@ -63,25 +63,17 @@
 
 
 	<h2>followed accounts</h2>
-	<div id="followed_plaque" class="plaque" ng-controller="UserPostsCtrl">
+	<div id="followed_plaque" class="plaque" >
 
-		<div ng-repeat="u in following" class="avatar_bar_tiny">
+		<div ng-repeat="u in user.following" 
+			ng-click="feed.show_user(u.name)"
+			ng-class="{'avatar_bar_tiny_active':(feed.state=='user' && feed.user==u.name), 'avatar_bar_tiny':!(feed.state=='user'&&feed.user==u.name)}"
+		>
 			<img src="{{ u.avatar_url }}" class="avatar" />
 			<a class="username">
 				{{ u.name }}
 			</a>
-		</div>
-		<div class="avatar_bar_tiny">
-			<img src="david-cameron.jpg" class="avatar" />
-			<a class="username">
-				David Cameron
-			</a>
-		</div>
-		<div class="avatar_bar_tiny">
-			<img src="spidey.jpg" class="avatar" />
-			<a class="username">
-				Spider Man
-			</a>
+			<span class="chevron glyphicon glyphicon-chevron-right"></span>
 		</div>
 		<div class="show_more margin-bot-neg-med centering">
 			<a>
@@ -92,34 +84,23 @@
 		</div>
 	</div>
 
+
+
 	<h2>watched issues</h2>
 	<div class="plaque">
 
-		<div class="issue_bar_tiny">
+		<div ng-repeat="i in user.watching" 
+			ng-click="show_issue(i.id)"
+			ng-class="{'issue_bar_tiny':!(feed.state=='issue' && feed.issue==i.name), 'issue_bar_tiny_active':(feed.state=='issue' && feed.issue==i.name)}"
+		>
 			<a class="issue_link">
-				<img src="keystone.jpg" class="issue_icon" />
+				<img src="{{ i.icon_url }}" class="issue_icon" />
 				<span class="issue_name">
-					Keystone XL Pipeline Extension
+					{{ i.name }}
 				</span>
 			</a>
-		</div>
-
-		<div class="issue_bar_tiny">
-			<a class="issue_link">
-				<img src="election.jpg" class="issue_icon" />
-				<span class="issue_name">
-					UK Election 2015
-				</span>
-			</a>
-		</div>
-
-		<div class="issue_bar_tiny">
-			<a class="issue_link">
-				<img src="assange.jpg" class="issue_icon" />
-				<span class="issue_name">
-					Free Julian Assange
-				</span>
-			</a>
+			<span class="chevron glyphicon glyphicon-chevron-right">
+			</span>
 		</div>
 
 		<div class="show_more margin-bot-neg-med centering">

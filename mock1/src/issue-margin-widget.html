@@ -1,0 +1,381 @@
+<div id="issue-margin" ng-controller="IssueCtrl">
+	<!-- begin key facts area -->
+	<div id="actors">
+		<h2 class="underlight">Actors</h2>
+		<button class="heading_button btn btn-sm btn-primary">
+			<span class="glyphicon glyphicon-envelope"></span>
+			write a letter
+		</button>
+
+		<div class="card" id="actors_list">
+
+			<div class="actor" ng-repeat="actor in issue.actors">
+				<span class="bold">
+					{{actor.position}}
+				</span>
+				<span class="actor-name">
+					{{actor.name}}
+				</span>
+			</div>
+
+			<div class="send-right">
+				<button class="btn btn-sm btn-default">
+					<span class="glyphicon glyphicon-plus"></span>
+					Add an actor
+				</button>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- begin in the news section -->
+	<div class="section" ng-controller="NewsCtrl">
+		<h2>In the News</h2>
+
+		<button type="button" 
+			class="heading_button btn btn-sm btn-primary" 
+			ng-model="is_collapsed" 
+			btn-checkbox btn-checkbox-true="0" 
+			btn-checkbox-false="1">
+			add news
+		</button>
+
+		<div class="margin-bot-sm" ng-hide="is_collapsed">
+			<div class="well well-lg">
+				<div class="form-horizontal">
+					<div class="clear form-group">
+						<label class="col-xs-2 control-label"
+							for="ref_link">Link:</label>
+						<div class="col-xs-10">
+							<input id="ref_link"
+								ng-model="link" type="text"
+								class="form-control" 
+								placeholder="www.statcan.gc.ca/food-and-nutrition"/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-xs-2 control-label"
+							for="ref_source">Source:</label>
+						<div class="col-xs-10">
+							<input id="ref_source" type="text"
+								ng-model="source"
+								class="form-control" 
+								placeholder="Statistics Canada" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-xs-2 control-label"
+							for="ref_title">Title:</label>
+						<div class="col-xs-10">
+							<input id="ref_title" type="text"
+								ng-model="title"
+								class="form-control" 
+								placeholder="Food and Nutrition by Province" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-xs-2 control-label"
+							for="ref_title">Date:</label>
+						<div class="col-xs-10">
+							<input id="ref_title" type="text"
+								ng-model="date"
+								class="form-control" 
+								placeholder="Food and Nutrition by Province" />
+						</div>
+					</div>
+				</div>
+
+				<label for="fact_text">
+					Brief summary?
+				</label>
+
+				<div class="form-group">
+					<textarea 
+						class="autogrow form-control"
+						id="fact_text"
+						ng-model="text">
+					</textarea>
+				</div>
+
+				<div class="btn-group" role="group" aria-label="...">
+					<button class="btn btn-sm btn-default"
+						ng-click="is_collapsed=!is_collapsed">
+						cancel</button>
+					<button class="btn btn-sm btn-primary"
+						ng-click="post()">post</button-->
+				</div>
+
+			</div>
+		</div>
+
+		<div class="card margin-bot-sm" ng-repeat="new in issue.news">
+			<div class="news-item-icon"><img src="{{new.icon_url}}" /></div>
+			<div class="news-item-info">
+				<span class="bold">{{new.date}}</span>
+				<span class="source small caps">
+					{{new.source}}
+				</span><span>
+					{{new.title}}
+				</span>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<!--div class="contribution_row">
+			<a>see all</a>
+			<span class="dot blue"></span>
+			<a>5 pending review</a>
+		</div-->
+
+	</div>
+	<!-- end in the news section -->
+
+	<!-- begin events section -->
+	<div class="section" ng-controller="EventsCtrl">
+		<h2>Events</h2>
+		<button type="button" 
+			class="heading_button btn btn-sm btn-primary" 
+			ng-model="is_collapsed" 
+			btn-checkbox btn-checkbox-true="0" 
+			btn-checkbox-false="1">
+			add event
+		</button>
+
+
+		<div class="margin-bot-sm" ng-hide="is_collapsed">
+			<div class="well well-lg">
+				<div class="form-horizontal">
+
+					<div class="clear form-group">
+						<label class="col-xs-2 control-label"
+							for="ref_link">Link:</label>
+						<div class="col-xs-10">
+							<input id="ref_link"
+								ng-model="link" type="text"
+								class="form-control" 
+								placeholder="www.statcan.gc.ca/food-and-nutrition"/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-xs-2 control-label"
+							for="ref_source">Date:</label>
+						<div class="col-xs-10">
+							<input id="ref_source" type="text"
+								ng-model="date"
+								class="form-control" 
+								placeholder="Statistics Canada" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-xs-2 control-label"
+							for="ref_title">Title:</label>
+						<div class="col-xs-10">
+							<input id="ref_title" type="text"
+								ng-model="title"
+								class="form-control" 
+								placeholder="Food and Nutrition by Province" />
+						</div>
+					</div>
+
+				</div>
+
+				<label for="fact_text">
+					Brief summary?
+				</label>
+				<div class="form-group">
+					<textarea 
+						class="autogrow form-control"
+						id="fact_text"
+						ng-model="text">
+					</textarea>
+				</div>
+
+				<div class="form-horizontal">
+					<div class="form-group">
+						<label class="col-xs-2 control-label"
+							for="ref_title">Icon:</label>
+						<div class="col-xs-10">
+							<input id="ref_title" type="text"
+								ng-model="icon"
+								class="form-control" 
+								placeholder="Food and Nutrition by Province" />
+						</div>
+					</div>
+				</div>
+
+				<div class="btn-group" role="group" aria-label="...">
+					<button class="btn btn-sm btn-default"
+						ng-click="is_collapsed=!is_collapsed">
+						cancel</button>
+					<button class="btn btn-sm btn-primary"
+						ng-click="post()">post</button-->
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="card event margin-bot-sm bot-pad-med"
+			ng-repeat="event in issue.events"	>
+			<img class="ico" src="{{event.icon_url}}" />
+			<div class="event_text">
+				<span class="bold">{{event.date}}</span>
+				<span>{{ event.title }}</span>
+				<div class="social_actions">
+					<a>share</a>
+					<span class="dot blue"></span>
+					<a>support</a>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+	</div>
+	<!-- end events section -->
+
+	<div id="key_facts" ng-controller="KeyFactsCtrl">
+		<h2>Key Facts</h2>
+
+		<button type="button" 
+			class="heading_button btn btn-sm btn-primary" 
+			ng-model="is_collapsed" 
+			btn-checkbox btn-checkbox-true="0" 
+			btn-checkbox-false="1">
+			add fact
+		</button>
+
+		<div ng-hide="is_collapsed">
+			<div class="well well-lg">
+				<label for="fact_text">
+					What do you know about this issue?
+				</label>
+				<div class="form-group">
+					<textarea 
+						class="autogrow form-control"
+						id="fact_text"
+						ng-model="text">
+					</textarea>
+					<div class="small help-block" ng-hide="references.length<2">
+						<strong>Hint:</strong> Use numbers like [1]
+						or [2] to point to a specific reference.
+					</div>
+				</div>
+
+				<div class="form-horizontal">
+					<strong>Provide your references</strong>
+					<div class="bot-pad-med">
+						<fieldset 
+							class="bot-pad-0 sharp-bot-right"
+							ng-repeat="ref in references"
+							ng-class="{'bot-pad-med':!$last}" > 
+							<button 
+								ng-hide="$first"
+								ng-click="remove($index)"
+								type="button" 
+								class="pull-right close margin-top-neg-sm margin-bot-sm" 
+								aria-label="Close">
+								<span aria-hidden="true">
+									&times;
+								</span>
+							</button>
+							<div class="small margin-top-neg-sm pull-left grey">
+								Ref [{{$index+1}}]
+							</div>
+							<div class="clear form-group">
+								<label class="col-xs-2 control-label"
+									for="ref_link">Link:</label>
+								<div class="col-xs-10">
+									<input id="ref_link"
+										ng-model="ref.link" type="text"
+										class="form-control" 
+										placeholder="www.statcan.gc.ca/food-and-nutrition"/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-xs-2 control-label"
+									for="ref_source">Source:</label>
+								<div class="col-xs-10">
+									<input id="ref_source" type="text"
+										ng-model="ref.source"
+										class="form-control" 
+										placeholder="Statistics Canada" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-xs-2 control-label"
+									for="ref_title">Title:</label>
+								<div class="col-xs-10">
+									<input id="ref_title" type="text"
+										ng-model="ref.title"
+										class="form-control" 
+										placeholder="Food and Nutrition by Province" />
+								</div>
+							</div>
+						</fieldset>
+						<a class="custom-border-1 pull-right" 
+							ng-click="add_ref()">
+							add another reference
+						</a>
+					</div>
+				</div>
+
+
+				<div class="btn-group" role="group" aria-label="...">
+					<button class="btn btn-sm btn-default"
+						ng-click="is_collapsed=!is_collapsed">
+						cancel</button>
+					<button class="btn btn-sm btn-primary"
+						ng-click="post_fact()">post</button-->
+				</div>
+			</div>
+		</div>
+
+		<div class="margin-bot-sm card" ng-repeat="fact in issue.facts">
+
+			<div class="fact-top">
+				<p>
+				{{ fact.text }}
+				</p>
+
+				<div class="social_actions">
+					<a>share</a>
+					<span class="dot blue"></span>
+					<a>support</a>
+					<span class="dot blue"></span>
+					<a>dispute</a>
+				</div>
+
+			</div>
+
+			<div class="fact-bottom">
+				<div class="reflist">
+					<li ng-repeat="ref in fact.references" >
+					<a href="{{ref.url}}">
+						{{ ref.source }},
+						{{ ref.date }},
+						<span class="italic">{{ ref.title }}</span>
+					</a>
+					</li>
+				</div>
+			</div>
+
+		</div>
+
+		<!--div class="contribution_row">
+			<a>see all</a>
+			<span class="dot blue"></span>
+			<a>5 pending review</a>
+		</div-->
+
+	</div>
+	<!-- end key facts area -->
+
+
+</div>
