@@ -1,5 +1,6 @@
 var BASE_URL = 'https://vivid-torch-4114.firebaseio.com';
-var my_app = angular.module('my_app', ['ngAnimate', 'ui.bootstrap', 'firebase']);
+
+var my_app = angular.module('my_app');
 
 // Service to make the logged in user's info available app-wide
 my_app.service('User', ['$rootScope', function($rootScope) {

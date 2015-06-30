@@ -90,10 +90,9 @@
 	<div class="plaque">
 
 		<div ng-repeat="i in user.watching" 
-			ng-click="show_issue(i.id)"
 			ng-class="{'issue_bar_tiny':!(feed.state=='issue' && feed.issue==i.name), 'issue_bar_tiny_active':(feed.state=='issue' && feed.issue==i.name)}"
 		>
-			<a class="issue_link">
+			<a href="#/issue/free_julian" class="issue_link">
 				<img src="images/{{ i.icon_url }}" class="issue_icon" />
 				<span class="issue_name">
 					{{ i.name }}

@@ -11,27 +11,24 @@
 			rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript" src="autogrow.js"></script>
-		<script type="text/javascript">
-			//window.onerror =  function(msg, url, line, col, error) {
-			//	var extra = !col ? '' : '\ncolumn: ' + col;
-			//	extra += !error ? '' : '\nerror: ' + error;
-
-			//	// alert the error
-			//	alert("Error: " + msg + "\nurl: " + url + "\nline: " 
-			//			+ line + extra);   
-
-			//	// prevent browsers that natively alert errors
-			//	var suppressNativeErrorAlert = true;
-			//	return suppressNativeErrorAlert;
-			//};
-		</script>
 		<script type="text/javascript" src="angular1.2.6.js"></script>
 		<script type="text/javascript" src="ui-bootstrap.js"></script>
 		<script type="text/javascript" src="angular-animate1.2.6.js"></script>
 		<script type="text/javascript" src="firebase.js"></script>
 		<script type="text/javascript" src="angularfire.js"></script>
-		<script type="text/javascript" src="index_controllers.js"></script>
-		<script type="text/javascript" src="issue_controllers.js"></script>
+
+		<script type="text/javascript" src="angular-route.js"></script>
+		<script type="text/javascript" src="scripts/app.js"></script>
+
+		<script type="text/javascript" 
+			src="scripts/controllers/index_controllers.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/issue_controllers.js"></script>
+
+		<script type="text/javascript" 
+			src="scripts/controllers/issue_dummy_controller.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/index_dummy_controller.js"></script>
 
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -50,6 +47,8 @@
 
 			<!-- center column -->
 			<div id="center-lane" ng-controller="ContentCtrl">
+
+				<div ng-view></div>
 
 				<div class="centering" ng-show="view_mode.view_mode=='home_feed'">
 					<div ng-include="'post-widget.html'"></div>
