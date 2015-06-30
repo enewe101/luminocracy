@@ -2,7 +2,7 @@ var BASE_URL = 'https://vivid-torch-4114.firebaseio.com';
 var my_app = angular.module('my_app', ['ngAnimate', 'ui.bootstrap', 'firebase']);
 
 // Service to make the logged in user's info available app-wide
-my_app.service('User', ['$q', '$rootScope', function($q, $rootScope) {
+my_app.service('User', ['$rootScope', function($rootScope) {
 
 	// to reference context in callbacks
 	var that = this;
@@ -21,8 +21,8 @@ my_app.service('User', ['$q', '$rootScope', function($q, $rootScope) {
 			var user = snapshot.val();
 
 			// copy user values to service so they're available app-wide
-			var new_following = [];
-			var new_watching  = [];
+			that.following = [];
+			that.watching  = [];
 
 			for(var i in user.watching) {
 				var issue_url = BASE_URL + '/issues/' + i;
@@ -30,7 +30,8 @@ my_app.service('User', ['$q', '$rootScope', function($q, $rootScope) {
 				issue_ref.once('value', function(issue_snap) {
 					var issue = issue_snap.val();
 					issue['id'] = i;
-					new_watching.push(issue);
+					that.watching.push(issue);
+					$rootScope.$apply();
 				});
 			}
 
@@ -40,16 +41,14 @@ my_app.service('User', ['$q', '$rootScope', function($q, $rootScope) {
 				followed_user_ref.once('value', function(followed_user_snap) {
 					var followed_user = followed_user_snap.val()
 					followed_user['id'] = u;
-					new_following.push(followed_user);
+					that.following.push(followed_user);
+					$rootScope.$apply();
 				});
 			}
 
 			that.name = user.name;
 			that.avatar_url = user.avatar_url;
 			that.rep = user.rep;
-			that.following = new_following;
-			that.watching = new_watching;
-
 
 		});
 	}
@@ -62,20 +61,6 @@ my_app.service('User', ['$q', '$rootScope', function($q, $rootScope) {
 		}
 	}
 
-	// get's a certain user's info, for usage by the caller
-	this.get_user = function(username) {
-		var deferred = $q.defer();
-
-		var full_url = base_url + '/' + username;
-		var ref = new Firebase(full_url);
-
-		ref.once('value', function(snapshot) {
-			var user = snapshot.val();
-			deferred.resolve(user);
-		});
-
-		return deferred.promise;
-	}
 }]);
 
 
@@ -134,7 +119,6 @@ my_app.service('feed', ['User', function(User) {
 	this.filter = this.filters['all'];
 
 	this.show_issue = function(issue_id) {
-		alert('showing issue');
 		this.state = 'issue';
 		this.issue = issue_id;
 		this.user = null;
