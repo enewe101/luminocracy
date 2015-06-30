@@ -1,14 +1,14 @@
 <div ng-controller="OptionsCtrl">
 
 	<div class="centering">
-		<img src="leaf-emboss.png" />
+		<img src="images/leaf-emboss.png" />
 	</div>
 
 
 	<div class="big_plaque">
 		<div class="home_avatar_bar">
 
-			<img class="avatar" src="{{ user.avatar_url }}" />
+			<img class="avatar" src="images/{{ user.avatar_url }}" />
 
 			<div class="margin-left-md user-deets">
 
@@ -69,7 +69,7 @@
 			ng-click="feed.show_user(u.name)"
 			ng-class="{'avatar_bar_tiny_active':(feed.state=='user' && feed.user==u.name), 'avatar_bar_tiny':!(feed.state=='user'&&feed.user==u.name)}"
 		>
-			<img src="{{ u.avatar_url }}" class="avatar" />
+			<img src="images/{{ u.avatar_url }}" class="avatar" />
 			<a class="username">
 				{{ u.name }}
 			</a>
@@ -94,7 +94,7 @@
 			ng-class="{'issue_bar_tiny':!(feed.state=='issue' && feed.issue==i.name), 'issue_bar_tiny_active':(feed.state=='issue' && feed.issue==i.name)}"
 		>
 			<a class="issue_link">
-				<img src="{{ i.icon_url }}" class="issue_icon" />
+				<img src="images/{{ i.icon_url }}" class="issue_icon" />
 				<span class="issue_name">
 					{{ i.name }}
 				</span>

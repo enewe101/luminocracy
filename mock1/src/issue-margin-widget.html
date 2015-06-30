@@ -112,7 +112,7 @@
 		</div>
 
 		<div class="card margin-bot-sm" ng-repeat="new in issue.news">
-			<div class="news-item-icon"><img src="{{new.icon_url}}" /></div>
+			<div class="news-item-icon"><img src="images/{{new.icon_url}}" /></div>
 			<div class="news-item-info">
 				<span class="bold">{{new.date}}</span>
 				<span class="source small caps">
@@ -222,7 +222,7 @@
 
 		<div class="card event margin-bot-sm bot-pad-med"
 			ng-repeat="event in issue.events"	>
-			<img class="ico" src="{{event.icon_url}}" />
+			<img class="ico" src="images/{{event.icon_url}}" />
 			<div class="event_text">
 				<span class="bold">{{event.date}}</span>
 				<span>{{ event.title }}</span>
