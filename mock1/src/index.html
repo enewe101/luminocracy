@@ -18,18 +18,64 @@
 		<script type="text/javascript" src="angularfire.js"></script>
 
 		<script type="text/javascript" src="angular-route.js"></script>
+		
+		<!-- main module -->
 		<script type="text/javascript" src="scripts/app.js"></script>
-
+		
+		<!-- old controllers -->
 		<script type="text/javascript" 
 			src="scripts/controllers/index_controllers.js"></script>
-		<script type="text/javascript" 
-			src="scripts/controllers/issue_controllers.js"></script>
 
+		<!-- new controllers -->
 		<script type="text/javascript" 
-			src="scripts/controllers/issue_dummy_controller.js"></script>
+			src="scripts/controllers/home.js"></script>
 		<script type="text/javascript" 
-			src="scripts/controllers/index_dummy_controller.js"></script>
+			src="scripts/controllers/issue.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/content.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/options.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/user_posts.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/feed_status.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/post.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/temp.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/letter.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/feed.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/news.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/subscribe.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/fire_test.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/key_facts.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/issue_post.js"></script>
+		<script type="text/javascript" 
+			src="scripts/controllers/events.js"></script>
 
+		
+		<!-- services -->
+		<script type="text/javascript" 
+			src="scripts/services/user.js"></script>
+		<script type="text/javascript" 
+			src="scripts/services/feed.js"></script>
+		<script type="text/javascript" 
+			src="scripts/services/issue.js"></script>
+		<script type="text/javascript" 
+			src="scripts/services/view_mode.js"></script>
+
+		<!-- directives -->
+		<script type="text/javascript" 
+			src="scripts/directives/plaque.js"></script>
+		
+		
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('.autogrow').autogrow();
@@ -37,68 +83,9 @@
 		</script>
 	</head>
 	<body ng-app="my_app">
+		<div ng-view></div>
 
-		<div class="column_wrapper">
-
-			<!-- left column -->
-			<div id="side-nav">
-				<div ng-include="'side-nav-widget.html'"></div>
-			</div>
-
-			<!-- center column -->
-			<div id="center-lane" ng-controller="ContentCtrl">
-
-				<div ng-view></div>
-
-				<div class="centering" ng-show="view_mode.view_mode=='home_feed'">
-					<div ng-include="'post-widget.html'"></div>
-					<h2 ng-controller="FeedStatusCtrl" 
-						class="margin-top-lg font-grey underlight">
-						{{ feed_status }}
-					</h2>
-					<div ng-include="'feed_widget.html'"></div>
-				</div>
-
-				<div class="centering" 
-					ng-show="view_mode.view_mode=='issue_page'">
-
-					<div ng-include="'issue-description-widget.html'"></div>
-
-					<div ng-include="'post-widget.html'"></div>
-
-					<h2 ng-controller="FeedStatusCtrl" 
-						class="margin-top-lg font-grey underlight">
-						What people are saying:
-					</h2>
-
-					<div ng-include="'feed_widget.html'"></div>
-
-				</div>
-
-			</div>
-
-			<!-- right column -->
-			<div id="right_lane" ng-controller="ContentCtrl">
-
-
-				<div ng-show="view_mode.view_mode=='home_feed'">
-					<div id="home-feed-right-lane-bg"></div>
-					<div id="home-feed-right-lane"
-						ng-include="'right-nav-widget.html'"></div>
-				</div>
-
-				<div ng-show="view_mode.view_mode=='issue_page'">
-					<div id="issue-page-right-lane-bg"></div>
-					<div id="issue-page-right-lane"
-						ng-include="'issue-margin-widget.html'">
-					</div>
-				</div>
-
-			</div>
-
-			<div class="clear"></div>
-
-		</div>
+		
 
 	</body>
 </html>

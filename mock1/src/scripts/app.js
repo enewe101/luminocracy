@@ -5,12 +5,12 @@ angular.module(
 ).config(function ($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'index.html', 
-			controller: 'IndexDummyController'
+			templateUrl: 'views/home.html', 
+			controller: 'HomeCtrl'
 		})
-		.when('/issue/free_julian', {
+		.when('/issue/:issue_id', {
 			templateUrl: 'views/issue.html',
-			controller: 'IssueDummyController',
+			controller: 'IssueCtrl',
 		})
 		.otherwise({
 			redirectTo:'/'

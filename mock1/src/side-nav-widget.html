@@ -62,27 +62,7 @@
 	</div>
 
 
-	<h2>followed accounts</h2>
-	<div id="followed_plaque" class="plaque" >
-
-		<div ng-repeat="u in user.following" 
-			ng-click="feed.show_user(u.name)"
-			ng-class="{'avatar_bar_tiny_active':(feed.state=='user' && feed.user==u.name), 'avatar_bar_tiny':!(feed.state=='user'&&feed.user==u.name)}"
-		>
-			<img src="images/{{ u.avatar_url }}" class="avatar" />
-			<a class="username">
-				{{ u.name }}
-			</a>
-			<span class="chevron glyphicon glyphicon-chevron-right"></span>
-		</div>
-		<div class="show_more margin-bot-neg-med centering">
-			<a>
-				see all<br/>
-				<span class="glyphicon glyphicon-chevron-down"
-					aria-hidden="true"></span>
-			</a>
-		</div>
-	</div>
+	<lu-plaque title="followed accounts" items="user.following" active="(feed.state=='user')" selected='feed.user' click="feed.show_user(id)"></lu-plaque>
 
 
 
@@ -92,7 +72,7 @@
 		<div ng-repeat="i in user.watching" 
 			ng-class="{'issue_bar_tiny':!(feed.state=='issue' && feed.issue==i.name), 'issue_bar_tiny_active':(feed.state=='issue' && feed.issue==i.name)}"
 		>
-			<a href="#/issue/free_julian" class="issue_link">
+			<a href="#/issue/{{i.id}}" class="issue_link">
 				<img src="images/{{ i.icon_url }}" class="issue_icon" />
 				<span class="issue_name">
 					{{ i.name }}

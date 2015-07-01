@@ -9,18 +9,12 @@
 			<div id="center-lane" ng-controller="ContentCtrl">
 
 				<div class="centering">
-
-					<div ng-include="'issue-description-widget.html'"></div>
-
 					<div ng-include="'post-widget.html'"></div>
-
 					<h2 ng-controller="FeedStatusCtrl" 
 						class="margin-top-lg font-grey underlight">
-						What people are saying:
+						{{ feed_status }}
 					</h2>
-
 					<div ng-include="'feed_widget.html'"></div>
-
 				</div>
 
 			</div>
@@ -29,10 +23,9 @@
 			<div id="right_lane" ng-controller="ContentCtrl">
 
 				<div>
-					<div id="issue-page-right-lane-bg"></div>
-					<div id="issue-page-right-lane"
-						ng-include="'issue-margin-widget.html'">
-					</div>
+					<div id="home-feed-right-lane-bg"></div>
+					<div id="home-feed-right-lane"
+						ng-include="'right-nav-widget.html'"></div>
 				</div>
 
 			</div>
