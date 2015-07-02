@@ -1,8 +1,7 @@
-<div ng-controller="OptionsCtrl">
-
-	<div class="centering">
+<div>
+    <div class="centering">
 		<img src="images/leaf-emboss.png" />
-	</div>
+    </div>
 
 
 	<div class="big_plaque">
@@ -30,64 +29,34 @@
 
 		<div class="user_options"
 			ng-class="{'news-feed-active':feed.state=='all'}">
-			<div ng-click="show_feed('all')" 
+			<div
 				ng-class="{'user-option-active':feed.state==='all', 'user-option':!(feed.state==='all')}">
-				<a>your newsfeed</a>
+				<a href="#/feed/all">your newsfeed</a>
 				<span 
 					class="chevron glyphicon glyphicon-chevron-right"></span>
 			</div>
 
-			<div ng-click="show_feed('issues')" 
+			<div 
 				ng-class="{'user-suboption-active':feed.state=='issues', 'user-suboption':!(feed.state=='issues')}">
-				<a>watched issues</a>
+				<a href="#/feed/issues">watched issues</a>
 				<span class="chevron glyphicon glyphicon-chevron-right"></span>
 			</div>
-			<div ng-click="show_feed('location')" 
+			<div 
 				ng-class="{'user-suboption-active':feed.state=='location', 'user-suboption':!(feed.state=='location')}">
-				<a>news for your location</a>
+				<a href="#/feed/location">news for your location</a>
 				<span class="chevron glyphicon glyphicon-chevron-right"></span>
 			</div>
-			<div ng-click="show_feed('followed')" 
+			<div
 				ng-class="{'user-suboption-active':feed.state=='followed', 'user-suboption':!(feed.state=='followed')}">
-				<a>followed accounts</a>
+				<a href="#/feed/followed">followed accounts</a>
 				<span class="chevron glyphicon glyphicon-chevron-right"></span>
 			</div>
-			<div ng-click="show_feed('own_posts')" 
+			<div
 				ng-class="{'user-suboption-active':feed.state=='own_posts', 'user-suboption':!(feed.state=='own_posts')}">
-				<a>your posts</a>
+				<a href="#/feed/own_posts">your posts</a>
 				<span class="chevron glyphicon glyphicon-chevron-right"></span>
 			</div>
 		</div>
 
-	</div>
-
-
-	<lu-plaque title="followed accounts" items="user.following" active="(feed.state=='user')" selected='feed.user' click="feed.show_user(id)"></lu-plaque>
-
-
-
-	<h2>watched issues</h2>
-	<div class="plaque">
-
-		<div ng-repeat="i in user.watching" 
-			ng-class="{'issue_bar_tiny':!(feed.state=='issue' && feed.issue==i.name), 'issue_bar_tiny_active':(feed.state=='issue' && feed.issue==i.name)}"
-		>
-			<a href="#/issue/{{i.id}}" class="issue_link">
-				<img src="images/{{ i.icon_url }}" class="issue_icon" />
-				<span class="issue_name">
-					{{ i.name }}
-				</span>
-			</a>
-			<span class="chevron glyphicon glyphicon-chevron-right">
-			</span>
-		</div>
-
-		<div class="show_more margin-bot-neg-med centering">
-			<a>
-				see all<br/>
-				<span class="glyphicon glyphicon-chevron-down"
-					aria-hidden="true"></span>
-			</a>
-		</div>
 	</div>
 </div>

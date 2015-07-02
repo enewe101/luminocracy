@@ -2,14 +2,16 @@
 
 			<!-- left column -->
 			<div id="side-nav">
-				<div ng-include="'side-nav-widget.html'"></div>
+				<lu-user-plaque></lu-user-plaque>
+				<lu-plaque title="followed accounts" type="users"></lu-plaque>
+				<lu-plaque title="watched issues" type="issues"></lu-plaque>
 			</div>
 
 			<!-- center column -->
 			<div id="center-lane" ng-controller="ContentCtrl">
 
 				<div class="centering">
-					<div ng-include="'post-widget.html'"></div>
+					<lu-post></lu-post>
 					<h2 ng-controller="FeedStatusCtrl" 
 						class="margin-top-lg font-grey underlight">
 						{{ feed_status }}

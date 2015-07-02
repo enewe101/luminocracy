@@ -1,23 +1,20 @@
 'use strict';
 var my_app = angular.module('my_app')
 
-my_app.directive('luPlaque', function() {
+my_app.directive('luIssue', function() {
     return {
       restrict: 'E',
       transclude: true,
       scope: { 
-          title: '@',
-          type: '@',
       },
-      controller: [ "$scope",'feed','User', function($scope,feed,User) {
-        $scope.user = User
-        $scope.feed = feed
+      controller: [ "$scope",'Issue', function($scope,Issue) {
+        	$scope.issue = Issue;
       }],
       link: function (scope, element, attrs, controller) {
 
       },
       templateUrl: function(elem, attr){
-        return 'partials/plaque_'+attr.type+'.html';
+        return 'partials/issue.html';
       },
       replace: true
     };

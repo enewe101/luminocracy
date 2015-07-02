@@ -5,8 +5,16 @@ angular.module(
 ).config(function ($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'views/home.html', 
-			controller: 'HomeCtrl'
+			templateUrl: 'views/feed.html', 
+			controller: 'FeedCtrl'
+		})
+		.when('/feed/:feed_id', {
+			templateUrl: 'views/feed.html', 
+			controller: 'FeedCtrl'
+		})
+		.when('/user/:user_id/posts', {
+			templateUrl: 'views/feed.html', 
+			controller: 'FeedCtrl'
 		})
 		.when('/issue/:issue_id', {
 			templateUrl: 'views/issue.html',

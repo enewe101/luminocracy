@@ -2,12 +2,11 @@
 <h2>{{title}}</h2>
 	<div id="followed_plaque" class="plaque" >
 
-		<div ng-repeat="u in items"
-			ng-click="click({'id':u.name})"
-			ng-class="{'avatar_bar_tiny_active':(active && selected==u.name), 'avatar_bar_tiny':!(active && selected==u.name)}"
+		<div ng-repeat="u in user.following"
+			ng-class="{'avatar_bar_tiny_active':(feed.state=='user' && feed.user==u.name), 'avatar_bar_tiny':!(feed.state=='user' && feed.user==u.name)}"
 		>
 			<img src="images/{{ u.avatar_url }}" class="avatar" />
-			<a class="username">
+			<a class="username" href="#/user/{{u.name}}/posts">
 				{{ u.name }}
 			</a>
 			<span class="chevron glyphicon glyphicon-chevron-right"></span>

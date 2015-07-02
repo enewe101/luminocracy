@@ -1,0 +1,25 @@
+<div>
+    <h2>{{title}}</h2>
+	<div class="plaque">
+
+		<div ng-repeat="i in user.watching" 
+			ng-class="{'issue_bar_tiny':!(feed.state=='issue' && feed.issue==i.name), 'issue_bar_tiny_active':(feed.state=='issue' && feed.issue==i.name)}">
+			<a href="#/issue/{{i.id}}" class="issue_link">
+				<img src="images/{{ i.icon_url }}" class="issue_icon" />
+				<span class="issue_name">
+					{{ i.name }}
+				</span>
+			</a>
+			<span class="chevron glyphicon glyphicon-chevron-right">
+			</span>
+		</div>
+
+		<div class="show_more margin-bot-neg-med centering">
+			<a>
+				see all<br/>
+				<span class="glyphicon glyphicon-chevron-down"
+					aria-hidden="true"></span>
+			</a>
+		</div>
+	</div>
+</div>

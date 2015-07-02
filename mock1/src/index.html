@@ -28,19 +28,13 @@
 
 		<!-- new controllers -->
 		<script type="text/javascript" 
-			src="scripts/controllers/home.js"></script>
-		<script type="text/javascript" 
 			src="scripts/controllers/issue.js"></script>
 		<script type="text/javascript" 
 			src="scripts/controllers/content.js"></script>
 		<script type="text/javascript" 
-			src="scripts/controllers/options.js"></script>
-		<script type="text/javascript" 
 			src="scripts/controllers/user_posts.js"></script>
 		<script type="text/javascript" 
 			src="scripts/controllers/feed_status.js"></script>
-		<script type="text/javascript" 
-			src="scripts/controllers/post.js"></script>
 		<script type="text/javascript" 
 			src="scripts/controllers/temp.js"></script>
 		<script type="text/javascript" 
@@ -50,8 +44,6 @@
 		<script type="text/javascript" 
 			src="scripts/controllers/news.js"></script>
 		<script type="text/javascript" 
-			src="scripts/controllers/subscribe.js"></script>
-		<script type="text/javascript" 
 			src="scripts/controllers/fire_test.js"></script>
 		<script type="text/javascript" 
 			src="scripts/controllers/key_facts.js"></script>
@@ -59,7 +51,6 @@
 			src="scripts/controllers/issue_post.js"></script>
 		<script type="text/javascript" 
 			src="scripts/controllers/events.js"></script>
-
 		
 		<!-- services -->
 		<script type="text/javascript" 
@@ -74,8 +65,15 @@
 		<!-- directives -->
 		<script type="text/javascript" 
 			src="scripts/directives/plaque.js"></script>
-		
-		
+		<script type="text/javascript" 
+			src="scripts/directives/user_plaque.js"></script>
+		<script type="text/javascript" 
+			src="scripts/directives/post.js"></script>		
+		<script type="text/javascript" 
+			src="scripts/directives/subscribe.js"></script>
+		<script type="text/javascript" 
+			src="scripts/directives/issue.js"></script>
+			
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('.autogrow').autogrow();
@@ -84,8 +82,5 @@
 	</head>
 	<body ng-app="my_app">
 		<div ng-view></div>
-
-		
-
 	</body>
 </html>
