@@ -4,21 +4,9 @@ from lumi_rest import models
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 
-	comments = serializers.HyperlinkedRelatedField(
-		many=True, view_name='comment-detail', read_only=True
+	comments = serializers.HyperlinkedIdentityField(
+		view_name='user-comment-list'
 	)
-	#feed_items = serializers.HyperlinkedRelatedField(
-	#	view_name='feed-item-list', read_only=True
-	#)
-	#events = serializers.HyperlinkedRelatedField(
-	#	view_name='event-list', read_only=True
-	#)
-	#facts = serializers.HyperlinkedRelatedField(
-	#	view_name='fact-list', read_only=True
-	#)
-	#news_items = serializers.HyperlinkedRelatedField(
-	#	view_name='news-item-list', read_only=True
-	#)
 
 	class Meta:
 		model = models.User

@@ -40,6 +40,17 @@ class FeedItemViewSet(viewsets.ModelViewSet):
 	serializer_class = serializers.FeedItemSerializer
 
 
+
+class UserCommentListView(generics.ListAPIView):
+	serializer_class = serializers.CommentSerializer
+
+	def get_queryset(self):
+		return models.Comment.objects.filter(
+			author__pk=self.kwargs.get('pk')
+		)
+
+
+
 class CommentViewSet(viewsets.ModelViewSet):
 	permission_classes = [
 		permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
